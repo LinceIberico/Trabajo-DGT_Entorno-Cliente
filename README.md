@@ -3,8 +3,10 @@ Trabajo de grupo de javascript
 
 
 Componentes del grupo:
-
-Adrián Sánchez Millán
-Daniel Ruiz
-Juan José Acevedo
+<ul>
+  <li>Adrián Sánchez Millán</li>
+  <li>Daniel Ruiz</li>
+  <li>Juan José Acevedo</li>
+  <li>Carlos Muñoz Rodríguez</li>
+<ul>
 
