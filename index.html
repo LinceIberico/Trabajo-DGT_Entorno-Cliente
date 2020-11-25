@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="menu">
+    <form id="frmMenu" class="form-horizontal" style="float:initial" name="frmMenu">
+        <fieldset>
+        
+        <!-- Form Name -->
+        <legend>Menú principal</legend>
+        
+        <!-- Button -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="btnAltaConductor">Alta conductor</label>
+          <div class="col-md-4">
+            <input type="button" id="btnAltaConductor" name="btnAltaConductor" class="btn btn-primary" value="Dar de alta" onclick="mostrarAltaConductor()"/>
+          </div>
+        </div>
+        
+        <!-- Button -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="btnAltaGuardiaCivil">Alta guardia civil</label>
+          <div class="col-md-4">
+            <input type="button" id="btnAltaGuardiaCivil" name="btnAltaGuardiaCivil" class="btn btn-primary" value="Dar de alta" onclick="mostrarAltaGuardiaCivil()"/>
+          </div>
+        </div>
+        
+        <!-- Button -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="btnRegistrarMulta">Registrar multa</label>
+          <div class="col-md-4">
+            <input type="button" id="btnRegistrarMulta" name="btnRegistrarMulta" class="btn btn-primary" value="Registrar" onclick="mostrarRegistrarMulta()"/>
+          </div>
+        </div>
+        
+        <!-- Button -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="btnPagarMulta">Pagar multa</label>
+          <div class="col-md-4">
+            <input type="button" id="btnPagarMulta" name="btnPagarMulta" class="btn btn-primary" value="Pagar" onclick=""/>
+          </div>
+        </div>
+        
+        <!-- Button -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="btnListadoSaldoCond">Listado saldo conductor</label>
+          <div class="col-md-4">
+            <input type="button" id="btnListadoSaldoCond" name="btnListadoSaldoCond" class="btn btn-primary" value="Mostrar listado" onclick=""/>
+          </div>
+        </div>
+        
+        <!-- Button -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="btnListadoPuntosCond">Listado puntos conductor</label>
+          <div class="col-md-4">
+            <input type="button" id="btnListadoPuntosCond" name="btnListadoPuntosCond" class="btn btn-primary" value="Mostrar listado" onclick=""/>
+          </div>
+        </div>
+        
+        <!-- Button -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="btnListadoMultasPorGuardia">Listado multas por guardia</label>
+          <div class="col-md-4">
+            <input type="button" id="btnListadoMultasPorGuardia" name="btnListadoMultasPorGuardia" class="btn btn-primary" value="Mostrar listado" onclick=""/>
+          </div>
+        </div>
+        
+        <!-- Button -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="btnMultasPorFecha">Listado multas por fecha</label>
+          <div class="col-md-4">
+            <input type="button" id="btnMultasPorFecha" name="btnMultasPorFecha" class="btn btn-primary" value="Aceptar" onclick=""/>
+          </div>
+        </div>
+        
+        <!-- Button -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="btnListadoConductores">Listado conductores</label>
+          <div class="col-md-4">
+            <input type="button" id="btnListadoConductores" name="btnListadoConductores" class="btn btn-primary" value="Mostrar listado" onclick="listadoConductores()"/>
+          </div>
+        </div>
+        
+        <!-- Button -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="btnListadoGuardiaCiviles">Listado guardia civiles</label>
+          <div class="col-md-4">
+            <input type="button" id="btnListadoGuardiaCiviles" name="btnListadoGuardiaCiviles" class="btn btn-primary" value="Mostrar listado" onclick="listadoGuardiaCivil()"/>
+          </div>
+        </div>
+        
+        <!-- Button -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="btnImprimirMulta">Imprimir multa</label>
+          <div class="col-md-4">
+            <input type="button" id="btnImprimirMulta" name="btnImprimirMulta" class="btn btn-primary" value="Imprimir" onclick=""/>
+          </div>
+        </div>
+        
+        </fieldset>
+        </form>
+    </div>
+
+
+
+
+
+
+<!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+
+
+
+
+
+
+
+    <div id="altaConductor">
+    <form id="frmAltaConductor" class="form-horizontal">
+        <fieldset>
+        
+        <!-- Form Name -->
+        <legend>Alta de Conductor</legend>
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="txtNIF">NIF</label>  
+          <div class="col-md-4">
+          <input id="txtNIF" name="txtNIF" type="text" placeholder="NIF" class="form-control input-md">
+            
+          </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="txtNombre">Nombre</label>  
+          <div class="col-md-4">
+          <input id="txtNombre" name="txtNombre" type="text" placeholder="Nombre" class="form-control input-md">
+            
+          </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="txtApellidosConductor">Apellidos</label>  
+          <div class="col-md-4">
+          <input id="txtApellidosConductor" name="txtApellidosConductor" type="text" placeholder="Apellidos" class="form-control input-md">
+            
+          </div>
+        </div>
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="txtDireccionConductor">Dirección</label>  
+          <div class="col-md-4">
+          <input id="txtDireccionConductor" name="txtDireccionConductor" type="text" placeholder="Direccion" class="form-control input-md">
+            
+          </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="txtFechaCaducidad">Caducidad carnet</label>  
+            <div class="col-md-4">
+            <input id="txtFechaCaducidad" name="txtFechaCaducidad" type="date" placeholder="Caducidad" class="form-control input-md">
+              
+            </div>
+          </div>
+        
+        <!-- Button -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="btnEnviarConductor"></label>
+          <div class="col-md-4">
+            <input type="button" id="btnEnviarConductor" name="btnEnviarConductor" class="btn btn-primary" value="Dar de alta" onclick="aceptarAltaConductor()"/>
+            <input type="button" id="btnVolver" name="btnVolver" class="btn btn-primary" value="Volver" onclick="ocultarFormularios()"/>
+          </div>
+
+        </div>
+        
+
+        
+        </fieldset>
+        </form>
+        
+    </div>
+
+
+<!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+    <div id="altaGuardiaCivil">
+        <form id="frmAltaGuardiaCivil" class="form-horizontal">
+            <fieldset>
+            
+            <!-- Form Name -->
+            <legend>Alta de Guardia Civil</legend>
+            
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="txtNIF">NIF</label>  
+              <div class="col-md-4">
+              <input id="txtNIF" name="txtNIF" type="text" placeholder="NIF" class="form-control input-md">
+                
+              </div>
+            </div>
+            
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="txtNombre">Nombre</label>  
+              <div class="col-md-4">
+              <input id="txtNombre" name="txtNombre" type="text" placeholder="Nombre" class="form-control input-md">
+                
+              </div>
+            </div>
+            
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="txtApellidosConductor">Apellidos</label>  
+              <div class="col-md-4">
+              <input id="txtApellidosConductor" name="txtApellidosConductor" type="text" placeholder="Apellidos" class="form-control input-md">
+                
+              </div>
+            </div>
+            
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="txtDireccionConductor">Dirección</label>  
+              <div class="col-md-4">
+              <input id="txtDireccionConductor" name="txtDireccionConductor" type="text" placeholder="Direccion" class="form-control input-md">
+                
+              </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="txtPuesto">Puesto</label>  
+                <div class="col-md-4">
+                <input id="txtPuesto" name="txtPuesto" type="text" placeholder="Puesto" class="form-control input-md">
+                  
+                </div>
+              </div>
+            
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="btnEnviarConductor"></label>
+                <div class="col-md-4">
+                  <input type="button" id="btnEnviarConductor" name="btnEnviarConductor" class="btn btn-primary" value="Dar de alta" onclick="aceptarAltaGuardiaCivil()"/>
+                  <input type="button" id="btnVolver" name="btnVolver" class="btn btn-primary" value="Volver" onclick="ocultarFormularios()"/>
+                </div>
+            </div>
+            
+            </fieldset>
+            </form>
+            
+        </div>
+
+
+
+<!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+
+
+
+<div id="registrarMulta">
+<form id="frmRegistrarMulta" class="form-horizontal">
+    <fieldset>
+    
+    <!-- Form Name -->
+    <legend>Registrar Multa</legend>
+    
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="txtidMulta">ID Multa</label>  
+      <div class="col-md-4">
+      <input id="txtidMulta" name="txtidMulta" type="number" placeholder="ID Multa" class="form-control input-md">
+        
+      </div>
+    </div>
+    
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="txtNifConductor">NIF Conductor</label>  
+      <div class="col-md-4">
+      <input id="txtNifConductor" name="txtNifConductor" type="text" placeholder="NIF Conductor" class="form-control input-md">
+        
+      </div>
+    </div>
+    
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="txtNifGuardiaCivil">NIF Guardia Civil</label>  
+      <div class="col-md-4">
+      <input id="txtNifGuardiaCivil" name="txtNifGuardiaCivil" type="text" placeholder="NIF Guardia Civil" class="form-control input-md">
+        
+      </div>
+    </div>
+    
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="txtImporte">Importe</label>  
+      <div class="col-md-4">
+      <input id="txtImporte" name="txtImporte" type="text" placeholder="Importe" class="form-control input-md">
+        
+      </div>
+    </div>
+    
+    <!-- Textarea -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="txtDescripcion">Descripción</label>
+      <div class="col-md-4">                     
+        <textarea class="form-control" id="txtDescripcion" name="txtDescripcion"></textarea>
+      </div>
+    </div>
+    
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="dtFecha">Fecha</label>  
+      <div class="col-md-4">
+      <input id="dtFecha" name="dtFecha" type="text" placeholder="Fecha" class="form-control input-md">
+      </div>
+    </div>
+    <!--RADIO LEVEDAD-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="radioLevedad">Levedad</label>
+        <div class="col-md-4">
+        <div class="radio">
+          <label for="radioLevedad-0">
+            <input type="radio" name="radioLevedad" id="radioLevedadGrave" value="grave" checked="checked">
+            Grave
+          </label>
+          </div>
+        <div class="radio">
+          <label for="radioLevedad-1">
+            <input type="radio" name="radioLevedad" id="radioLevedadLeve" value="leve">
+            Leve
+          </label>
+          <div id="gravedadLeve" class="form-group">
+            <label class="col-md-4 control-label" for="radioBonificada">Bonificada</label>
+            <div class="col-md-4">
+            <div class="radio">
+              <label for="radioBonificada-0">
+                <input type="radio" name="radioBonificada" id="radioBonificada-0" value="true" checked="checked">
+                Si
+              </label>
+              </div>
+            <div class="radio">
+              <label for="radioBonificada-1">
+                <input type="radio" name="radioBonificada" id="radioBonificada-1" value="false">
+                No
+              </label>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+        
+    </div>
+      
+      
+
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="btnEnviarConductor"></label>
+        <div class="col-md-4">
+          <input type="button" id="btnRegistrarMulta" name="btnRegistrarMulta" class="btn btn-primary" value="Dar de alta" onclick=""/>
+          <input type="button" id="btnVolver" name="btnVolver" class="btn btn-primary" value="Volver" onclick="ocultarFormularios()"/>
+        </div>
+    </div>
+    
+    
+    </fieldset>
+    </form>
+</div>
+
+
+
+
+<!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+        <div id="mensajes" style="margin-left: 35%;"></div>
+        <script type="text/javascript" src="objetos.js"></script>
+        <script type="text/javascript" src="codigo.js"></script>
+        
+</body>
+</html>
