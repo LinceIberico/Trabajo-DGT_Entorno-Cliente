@@ -93,3 +93,64 @@ class Grave extends Multa {
         this.puntos = puntos;
     }
 }
+
+function Persona(sNif, sNombre, sApellidos, sDireccion)
+{
+    this.nif = sNif;
+    this.nombre = sNombre;
+    this.apellidos = sApellidos;
+    this.direccion = sDireccion;
+}
+
+Persona.prototype.toHTMLrow = function()
+{
+    let sFila = "<tr>";
+    sFila += "<td>" + this.nif + "</td>";
+    sFila += "<td>" + this.nombre + "</td>";
+    sFila += "<td>" + this.apellidos + "</td>";
+    sFila += "<td>" + this.direccion + "</td></tr>";
+
+    return sFila;
+}
+
+function Conductor(sNif, sNombre, sApellidos, sDireccion, dtCaducidadCarnet)
+{
+    Persona.apply(this, [sNif, sNombre, sApellidos, sDireccion]);
+    this.caducidadCarnet = dtCaducidadCarnet;
+}
+
+Conductor.prototype = Object.create(Persona.prototype);
+Conductor.prototype.constructor = Conductor;
+
+Conductor.prototype.toHTMLrow = function()
+{
+    let sFila = "<tr>";
+    sFila += "<td>" + this.nif + "</td>";
+    sFila += "<td>" + this.nombre + "</td>";
+    sFila += "<td>" + this.apellidos + "</td>";
+    sFila += "<td>" + this.direccion + "</td>";
+    sFila += "<td>" + this.caducidadCarnet + "</td></tr>";
+
+    return sFila;
+}
+
+function GuardiaCivil(sNif, sNombre, sApellidos, sDireccion, sPuesto )
+{
+    Persona.apply(this, [sNif, sNombre, sApellidos, sDireccion]);
+    this.puesto = sPuesto;
+}
+
+GuardiaCivil.prototype = Object.create(Persona.prototype);
+GuardiaCivil.prototype.constructor = GuardiaCivil;
+
+GuardiaCivil.prototype.toHTMLrow = function()
+{
+    let sFila = "<tr>";
+    sFila += "<td>" + this.nif + "</td>";
+    sFila += "<td>" + this.nombre + "</td>";
+    sFila += "<td>" + this.apellidos + "</td>";
+    sFila += "<td>" + this.direccion + "</td>";
+    sFila += "<td>" + this.puesto + "</td></tr>";
+
+    return sFila;
+}
