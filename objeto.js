@@ -3,51 +3,51 @@
 class Multa {
 
     constructor(idMulta, nifConductor, nifGuardia, importe, pagada, descripcion, fecha) {
-        this._idMulta = idMulta;
-        this._nifConductor = nifConductor;
-        this._nifGuardia = nifGuardia;
-        this._importe = importe;
-        this._pagada = pagada;
-        this._descripcion = descripcion;
-        this._fecha = fecha;
+        this.idMulta = idMulta;
+        this.nifConductor = nifConductor;
+        this.nifGuardia = nifGuardia;
+        this.importe = importe;
+        this.pagada = pagada;
+        this.descripcion = descripcion;
+        this.fecha = fecha;
     }
     get idMulta() {
-        return this._idMulta;
+        return this.idMulta;
     }
     set idMulta(valor) {
-        this._idMulta = valor;
+        this.idMulta = valor;
     }
 
     get nifConductor() {
         return this._nifConductor;
     }
     set nifConductor(valor) {
-        this._nifConductor = valor;
+        this.nifConductor = valor;
     }
 
     get nifGuardia() {
-        return this._nifGuardia;
+        return this.nifGuardia;
     }
     set nifGuardia(valor) {
-        this._nifGuardia = valor;
+        this.nifGuardia = valor;
     }
 
     get importe() {
-        return this._importe;
+        return this.importe;
     }
     set importe(valor) {
-        this._importe = valor;
+        this.importe = valor;
     }
 
     get pagada() {
-        return this._pagada;
+        return this.pagada;
     }
     set pagada(valor) {
-        this._pagada = valor;
+        this.pagada = valor;
     }
 
     get descripcion() {
-        return this._descripcion;
+        return this.descripcion;
     }
     set descripcion(valor) {
         this._descripcion = valor;
@@ -69,7 +69,17 @@ class Multa {
         sTabla += "<th>ID</th><th>NIF Conductor</th>";
         sTabla += "<th>NIF Guardia Civil</th><th>Importe</th>";
         sTabla += "<th>Pagada</th><th>Descripcion</th><th>Fecha</th>";
-        sTabla += "</tr></thead>";
+        sTabla += "</tr>;
+        sTabla += "<tr>;
+        sTabla += "<td>" + this.idMulta +"</td>";
+        sTabla += "<td>" + this.nifConductor +"</td>";
+        sTabla += "<td>" + this.nifGuardia + "</td>";
+        sTabla += "<td>" + this.importe + "</td>";
+        sTabla += "<td>" + this.pagada + "</td>";
+        sTabla += "<td>" + this.descripcion + "</td>";
+        sTabla += "<td>" + this.fecha + "</td>";
+        sTabla += "</tr>";
+        stabla += "</thead>";
 
     }
 
