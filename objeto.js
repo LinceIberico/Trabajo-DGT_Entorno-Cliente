@@ -94,6 +94,8 @@ class Grave extends Multa {
     }
 }
 
+/////////// CLASES DE LA FORMA ANTIGUA /////////////////
+//CLASE PERSONA CON SUS METODOS//
 function Persona(sNif, sNombre, sApellidos, sDireccion)
 {
     this.nif = sNif;
@@ -112,7 +114,8 @@ Persona.prototype.toHTMLrow = function()
 
     return sFila;
 }
-
+////////////////////////////////////////////////
+//CLASE CONDUCTOR Y SUS METODOS//
 function Conductor(sNif, sNombre, sApellidos, sDireccion, dtCaducidadCarnet)
 {
     Persona.apply(this, [sNif, sNombre, sApellidos, sDireccion]);
@@ -134,6 +137,10 @@ Conductor.prototype.toHTMLrow = function()
     return sFila;
 }
 
+////////////////////////////////////////////////
+
+//CLASE GUARDIA CIVIL Y SUS METODOS//
+
 function GuardiaCivil(sNif, sNombre, sApellidos, sDireccion, sPuesto )
 {
     Persona.apply(this, [sNif, sNombre, sApellidos, sDireccion]);
@@ -154,3 +161,5 @@ GuardiaCivil.prototype.toHTMLrow = function()
 
     return sFila;
 }
+
+////////////////////////////////////////////////
