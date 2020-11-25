@@ -19,7 +19,7 @@ class Multa {
     }
 
     get nifConductor() {
-        return this._nifConductor;
+        return this.nifConductor;
     }
     set nifConductor(valor) {
         this.nifConductor = valor;
@@ -50,14 +50,14 @@ class Multa {
         return this.descripcion;
     }
     set descripcion(valor) {
-        this._descripcion = valor;
+        this.descripcion = valor;
     }
 
     get fecha() {
-        return this._fecha;
+        return this.fecha;
     }
     set fecha(valor) {
-        this._fecha = valor;
+        this.fecha = valor;
     }
 
 
