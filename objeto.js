@@ -96,12 +96,6 @@ class Leve extends Multa {
     }
 }
 
-Leve.prototype = Object.create(Multa.prototype); 
-
-// Establecer la propiedad "constructor" para referencias a "Leve"
-Leve.prototype.constructor = Leve;
-
-
 //Clase Grave
 
 class Grave extends Multa {
@@ -110,11 +104,6 @@ class Grave extends Multa {
         this.puntos = puntos;
     }
 }
-
-Grave.prototype = Object.create(Multa.prototype); 
-
-// Establecer la propiedad "constructor" para referencias a "Grave"
-Grave.prototype.constructor = Grave;
 
 /////////// CLASES DE LA FORMA ANTIGUA /////////////////
 //CLASE PERSONA CON SUS METODOS//
