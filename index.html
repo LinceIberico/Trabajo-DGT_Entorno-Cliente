@@ -23,7 +23,7 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="btnAltaConductor">Alta conductor</label>
           <div class="col-md-4">
-            <input type="button" id="btnAltaConductor" name="btnAltaConductor" class="btn btn-primary" value="Dar de alta" onclick="mostrarAltaConductor()"/>
+            <input type="button" id="btnAltaConductor" name="btnAltaConductor" class="btn btn-primary" value="Dar de alta" data-toggle="modal" data-target="#altaConductor" />
           </div>
         </div>
         
@@ -31,7 +31,7 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="btnAltaGuardiaCivil">Alta guardia civil</label>
           <div class="col-md-4">
-            <input type="button" id="btnAltaGuardiaCivil" name="btnAltaGuardiaCivil" class="btn btn-primary" value="Dar de alta" onclick="mostrarAltaGuardiaCivil()"/>
+            <input type="button" id="btnAltaGuardiaCivil" name="btnAltaGuardiaCivil" class="btn btn-primary" value="Dar de alta" data-toggle="modal" data-target="#altaGuardiaCivil"/>
           </div>
         </div>
         
@@ -39,7 +39,7 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="btnRegistrarMulta">Registrar multa</label>
           <div class="col-md-4">
-            <input type="button" id="btnRegistrarMulta" name="btnRegistrarMulta" class="btn btn-primary" value="Registrar" onclick="mostrarRegistrarMulta()"/>
+            <input type="button" id="btnRegistrarMulta" name="btnRegistrarMulta" class="btn btn-primary" value="Registrar" data-toggle="modal" data-target="#registrarMulta" />
           </div>
         </div>
         
@@ -119,262 +119,307 @@
 <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 
 
+    <!--Modal Alta Conductor-->
+
+    <div class="modal" tabindex="-1" role="dialog" id="altaConductor">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
 
 
+                    <div id="altaConductor">
+                        <form id="frmAltaConductor" class="form-horizontal">
+                            <fieldset>
+                                <!-- Form Name -->
+                                <legend>Alta de Conductor</legend>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="txtNIF">NIF</label>
+                                    <div class="col-md-4">
+                                        <input id="txtNIF" name="txtNIF" type="text" placeholder="NIF" class="form-control input-md">
+
+                                    </div>
+                                </div>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="txtNombre">Nombre</label>
+                                    <div class="col-md-4">
+                                        <input id="txtNombre" name="txtNombre" type="text" placeholder="Nombre" class="form-control input-md">
+
+                                    </div>
+                                </div>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="txtApellidosConductor">Apellidos</label>
+                                    <div class="col-md-4">
+                                        <input id="txtApellidosConductor" name="txtApellidosConductor" type="text" placeholder="Apellidos" class="form-control input-md">
+
+                                    </div>
+                                </div>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="txtDireccionConductor">Dirección</label>
+                                    <div class="col-md-4">
+                                        <input id="txtDireccionConductor" name="txtDireccionConductor" type="text" placeholder="Direccion" class="form-control input-md">
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="txtFechaCaducidad">Caducidad carnet</label>
+                                    <div class="col-md-4">
+                                        <input id="txtFechaCaducidad" name="txtFechaCaducidad" type="date" placeholder="Caducidad" class="form-control input-md">
+
+                                    </div>
+                                </div>
+
+                                <!-- Button -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="btnEnviarConductor"></label>
+                                    <div class="col-md-4">
+                                        <input type="button" id="btnEnviarConductor" name="btnEnviarConductor" class="btn btn-primary" value="Dar de alta" onclick="aceptarAltaConductor()" />
+                                        <input type="button" id="btnVolver" name="btnVolver" class="btn btn-primary" value="Cerrar" data-dismiss="modal" />
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
 
 
-
-
-    <div id="altaConductor">
-    <form id="frmAltaConductor" class="form-horizontal">
-        <fieldset>
-        
-        <!-- Form Name -->
-        <legend>Alta de Conductor</legend>
-        
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="txtNIF">NIF</label>  
-          <div class="col-md-4">
-          <input id="txtNIF" name="txtNIF" type="text" placeholder="NIF" class="form-control input-md">
-            
-          </div>
-        </div>
-        
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="txtNombre">Nombre</label>  
-          <div class="col-md-4">
-          <input id="txtNombre" name="txtNombre" type="text" placeholder="Nombre" class="form-control input-md">
-            
-          </div>
-        </div>
-        
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="txtApellidosConductor">Apellidos</label>  
-          <div class="col-md-4">
-          <input id="txtApellidosConductor" name="txtApellidosConductor" type="text" placeholder="Apellidos" class="form-control input-md">
-            
-          </div>
-        </div>
-        
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="txtDireccionConductor">Dirección</label>  
-          <div class="col-md-4">
-          <input id="txtDireccionConductor" name="txtDireccionConductor" type="text" placeholder="Direccion" class="form-control input-md">
-            
-          </div>
-        </div>
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="txtFechaCaducidad">Caducidad carnet</label>  
-            <div class="col-md-4">
-            <input id="txtFechaCaducidad" name="txtFechaCaducidad" type="date" placeholder="Caducidad" class="form-control input-md">
-              
-            </div>
-          </div>
-        
-        <!-- Button -->
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="btnEnviarConductor"></label>
-          <div class="col-md-4">
-            <input type="button" id="btnEnviarConductor" name="btnEnviarConductor" class="btn btn-primary" value="Dar de alta" onclick="aceptarAltaConductor()"/>
-            <input type="button" id="btnVolver" name="btnVolver" class="btn btn-primary" value="Volver" onclick="ocultarFormularios()"/>
-          </div>
-
-        </div>
-        
-
-        
-        </fieldset>
-        </form>
-        
-    </div>
-
-
-<!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-
-    <div id="altaGuardiaCivil">
-        <form id="frmAltaGuardiaCivil" class="form-horizontal">
-            <fieldset>
-            
-            <!-- Form Name -->
-            <legend>Alta de Guardia Civil</legend>
-            
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="txtNIF">NIF</label>  
-              <div class="col-md-4">
-              <input id="txtNIF" name="txtNIF" type="text" placeholder="NIF" class="form-control input-md">
-                
-              </div>
-            </div>
-            
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="txtNombre">Nombre</label>  
-              <div class="col-md-4">
-              <input id="txtNombre" name="txtNombre" type="text" placeholder="Nombre" class="form-control input-md">
-                
-              </div>
-            </div>
-            
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="txtApellidosConductor">Apellidos</label>  
-              <div class="col-md-4">
-              <input id="txtApellidosConductor" name="txtApellidosConductor" type="text" placeholder="Apellidos" class="form-control input-md">
-                
-              </div>
-            </div>
-            
-            <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="txtDireccionConductor">Dirección</label>  
-              <div class="col-md-4">
-              <input id="txtDireccionConductor" name="txtDireccionConductor" type="text" placeholder="Direccion" class="form-control input-md">
-                
-              </div>
-            </div>
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="txtPuesto">Puesto</label>  
-                <div class="col-md-4">
-                <input id="txtPuesto" name="txtPuesto" type="text" placeholder="Puesto" class="form-control input-md">
-                  
                 </div>
-              </div>
-            
-            <!-- Button -->
-            <div class="form-group">
-                <label class="col-md-4 control-label" for="btnEnviarConductor"></label>
-                <div class="col-md-4">
-                  <input type="button" id="btnEnviarConductor" name="btnEnviarConductor" class="btn btn-primary" value="Dar de alta" onclick="aceptarAltaGuardiaCivil()"/>
-                  <input type="button" id="btnVolver" name="btnVolver" class="btn btn-primary" value="Volver" onclick="ocultarFormularios()"/>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+
+    <!--Modal Alta Guardia Civil-->
+    <div class="modal" tabindex="-1" role="dialog" id="altaGuardiaCivil">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+
+
+                    <div id="altaGuardiaCivil">
+                        <form id="frmAltaGuardiaCivil" class="form-horizontal">
+                            <fieldset>
+
+                                <!-- Form Name -->
+                                <legend>Alta de Guardia Civil</legend>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="txtNIF">NIF</label>
+                                    <div class="col-md-4">
+                                        <input id="txtNIF" name="txtNIF" type="text" placeholder="NIF" class="form-control input-md">
+
+                                    </div>
+                                </div>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="txtNombre">Nombre</label>
+                                    <div class="col-md-4">
+                                        <input id="txtNombre" name="txtNombre" type="text" placeholder="Nombre" class="form-control input-md">
+
+                                    </div>
+                                </div>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="txtApellidosConductor">Apellidos</label>
+                                    <div class="col-md-4">
+                                        <input id="txtApellidosConductor" name="txtApellidosConductor" type="text" placeholder="Apellidos" class="form-control input-md">
+
+                                    </div>
+                                </div>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="txtDireccionConductor">Dirección</label>
+                                    <div class="col-md-4">
+                                        <input id="txtDireccionConductor" name="txtDireccionConductor" type="text" placeholder="Direccion" class="form-control input-md">
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="txtPuesto">Puesto</label>
+                                    <div class="col-md-4">
+                                        <input id="txtPuesto" name="txtPuesto" type="text" placeholder="Puesto" class="form-control input-md">
+
+                                    </div>
+                                </div>
+
+                                <!-- Button -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="btnEnviarConductor"></label>
+                                    <div class="col-md-4">
+                                        <input type="button" id="btnEnviarConductor" name="btnEnviarConductor" class="btn btn-primary" value="Dar de alta" onclick="aceptarAltaGuardiaCivil()" />
+                                        <input type="button" id="btnVolver" name="btnVolver" class="btn btn-primary" value="Cerrar" data-dismiss="modal" />
+                                    </div>
+                                </div>
+
+                            </fieldset>
+                        </form>
+
+                    </div>
                 </div>
+
             </div>
-            
-            </fieldset>
-            </form>
-            
         </div>
-
-
-
-<!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-
-
-
-
-<div id="registrarMulta">
-<form id="frmRegistrarMulta" class="form-horizontal">
-    <fieldset>
-    
-    <!-- Form Name -->
-    <legend>Registrar Multa</legend>
-    
-    <!-- Text input-->
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="txtidMulta">ID Multa</label>  
-      <div class="col-md-4">
-      <input id="txtidMulta" name="txtidMulta" type="number" placeholder="ID Multa" class="form-control input-md">
-        
-      </div>
     </div>
-    
-    <!-- Text input-->
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="txtNifConductor">NIF Conductor</label>  
-      <div class="col-md-4">
-      <input id="txtNifConductor" name="txtNifConductor" type="text" placeholder="NIF Conductor" class="form-control input-md">
-        
-      </div>
-    </div>
-    
-    <!-- Text input-->
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="txtNifGuardiaCivil">NIF Guardia Civil</label>  
-      <div class="col-md-4">
-      <input id="txtNifGuardiaCivil" name="txtNifGuardiaCivil" type="text" placeholder="NIF Guardia Civil" class="form-control input-md">
-        
-      </div>
-    </div>
-    
-    <!-- Text input-->
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="txtImporte">Importe</label>  
-      <div class="col-md-4">
-      <input id="txtImporte" name="txtImporte" type="text" placeholder="Importe" class="form-control input-md">
-        
-      </div>
-    </div>
-    
-    <!-- Textarea -->
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="txtDescripcion">Descripción</label>
-      <div class="col-md-4">                     
-        <textarea class="form-control" id="txtDescripcion" name="txtDescripcion"></textarea>
-      </div>
-    </div>
-    
-    <!-- Text input-->
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="dtFecha">Fecha</label>  
-      <div class="col-md-4">
-      <input id="dtFecha" name="dtFecha" type="text" placeholder="Fecha" class="form-control input-md">
-      </div>
-    </div>
-    <!--RADIO LEVEDAD-->
-    <div class="form-group">
-        <label class="col-md-4 control-label" for="radioLevedad">Levedad</label>
-        <div class="col-md-4">
-        <div class="radio">
-          <label for="radioLevedad-0">
-            <input type="radio" name="radioLevedad" id="radioLevedadGrave" value="grave" checked="checked">
-            Grave
-          </label>
-          </div>
-        <div class="radio">
-          <label for="radioLevedad-1">
-            <input type="radio" name="radioLevedad" id="radioLevedadLeve" value="leve">
-            Leve
-          </label>
-          <div id="gravedadLeve" class="form-group">
-            <label class="col-md-4 control-label" for="radioBonificada">Bonificada</label>
-            <div class="col-md-4">
-            <div class="radio">
-              <label for="radioBonificada-0">
-                <input type="radio" name="radioBonificada" id="radioBonificada-0" value="true" checked="checked">
-                Si
-              </label>
-              </div>
-            <div class="radio">
-              <label for="radioBonificada-1">
-                <input type="radio" name="radioBonificada" id="radioBonificada-1" value="false">
-                No
-              </label>
-              </div>
+
+
+
+    <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+    <!--Modal Registrar Multa-->
+
+    <div class="modal" tabindex="-1" role="dialog" id="registrarMulta">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+
+
+
+                    <div id="registrarMulta">
+                        <form id="frmRegistrarMulta" class="form-horizontal">
+                            <fieldset>
+
+                                <!-- Form Name -->
+                                <legend>Registrar Multa</legend>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="txtidMulta">ID Multa</label>
+                                    <div class="col-md-4">
+                                        <input id="txtidMulta" name="txtidMulta" type="number" placeholder="ID Multa" class="form-control input-md">
+
+                                    </div>
+                                </div>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="txtNifConductor">NIF Conductor</label>
+                                    <div class="col-md-4">
+                                        <input id="txtNifConductor" name="txtNifConductor" type="text" placeholder="NIF Conductor" class="form-control input-md">
+
+                                    </div>
+                                </div>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="txtNifGuardiaCivil">NIF Guardia Civil</label>
+                                    <div class="col-md-4">
+                                        <input id="txtNifGuardiaCivil" name="txtNifGuardiaCivil" type="text" placeholder="NIF Guardia Civil" class="form-control input-md">
+
+                                    </div>
+                                </div>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="txtImporte">Importe</label>
+                                    <div class="col-md-4">
+                                        <input id="txtImporte" name="txtImporte" type="text" placeholder="Importe" class="form-control input-md">
+
+                                    </div>
+                                </div>
+
+                                <!-- Textarea -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="txtDescripcion">Descripción</label>
+                                    <div class="col-md-4">
+                                        <textarea class="form-control" id="txtDescripcion" name="txtDescripcion"></textarea>
+                                    </div>
+                                </div>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="dtFecha">Fecha</label>
+                                    <div class="col-md-4">
+                                        <input id="dtFecha" name="dtFecha" type="date" placeholder="Fecha" class="form-control input-md">
+                                    </div>
+                                </div>
+
+                                <!--RADIO LEVEDAD-->
+
+                                <div class="form-group">
+
+                                    <label class="col-md-4 control-label" for="radioLevedad">Levedad</label>
+
+                                    <div class="col-md-4">
+
+                                        <div class="radio">
+                                            <label for="radioLevedad-0">
+                                                <input type="radio" name="radioLevedad" id="radioLevedadGrave" value="grave" onclick="txtPuntosPerdidos.disabled = false ; radioBonificada.disabled = true ">Grave
+                                            </label>
+                                        </div>
+
+                                        <div class="radio">
+                                            <label for="radioLevedad-1">
+                                                <input type="radio" name="radioLevedad" id="radioLevedadLeve" value="leve" onclick="radioBonificada.disabled = false ; txtPuntosPerdidos.disabled = true">Leve
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="gravedadLeve" class="form-group" name="leve">
+                                    <label class="col-md-4 control-label" for="radioBonificada">Bonificada</label>
+
+                                    <div class="col-md-4">
+
+                                        <div class="radio">
+                                            <label for="radioBonificada-0">
+                                                <input type="radio" name="radioBonificada" id="radioBonificada-0" value="true" disabled>Si
+                                            </label>
+                                        </div>
+
+                                        <!--<div class="radio">
+                                            <label for="radioBonificada-1">
+                                                <input type="radio" name="radioBonificada" id="radioBonificada-1" value="false" checked="checked" disabled>No
+                                            </label>
+                                        </div>-->
+
+                                    </div>
+                                </div>
+
+                                <div id="puntosPerdidos" class="form-group" name="grave">
+
+                                    <label class="col-md-4 control-label" for="txtPuntosPerdidos">Puntos Perdidos</label>
+                                    <div class="col-md-4">
+                                        <input id="txtPuntosPerdidos" name="txtPuntosPerdidos" type="number" min="1" max="15" placeholder="Puntos Perdidos" class="form-control input-md" disabled>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="btnEnviarConductor"></label>
+                                    <div class="col-md-4">
+                                        <input type="button" id="btnRegistrarMulta" name="btnRegistrarMulta" class="btn btn-primary" value="Dar de alta" onclick="" />
+                                        <input type="button" id="btnVolver" name="btnVolver" class="btn btn-primary" value="Cerrar" data-dismiss="modal" />
+                                    </div>
+                                </div>
+
+
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+
             </div>
-          </div>
-          </div>
         </div>
-        
     </div>
-      
-      
 
-    <div class="form-group">
-        <label class="col-md-4 control-label" for="btnEnviarConductor"></label>
-        <div class="col-md-4">
-          <input type="button" id="btnRegistrarMulta" name="btnRegistrarMulta" class="btn btn-primary" value="Dar de alta" onclick=""/>
-          <input type="button" id="btnVolver" name="btnVolver" class="btn btn-primary" value="Volver" onclick="ocultarFormularios()"/>
-        </div>
-    </div>
-    
-    
-    </fieldset>
-    </form>
-</div>
 
 
 
@@ -384,6 +429,13 @@
         <div id="mensajes" style="margin-left: 35%;"></div>
         <script type="text/javascript" src="objeto.js"></script>
         <script type="text/javascript" src="codigo.js"></script>
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
         
 </body>
 </html>
