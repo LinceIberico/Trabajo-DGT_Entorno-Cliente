@@ -69,10 +69,10 @@ class Multa {
         sTabla += "<th>ID</th><th>NIF Conductor</th>";
         sTabla += "<th>NIF Guardia Civil</th><th>Importe</th>";
         sTabla += "<th>Pagada</th><th>Descripcion</th><th>Fecha</th>";
-        sTabla += "</tr>;
-        sTabla += "<tr>;
-        sTabla += "<td>" + this.idMulta +"</td>";
-        sTabla += "<td>" + this.nifConductor +"</td>";
+        sTabla += "</tr>";
+        sTabla += "<tr>";
+        sTabla += "<td>" + this.idMulta + "</td>";
+        sTabla += "<td>" + this.nifConductor + "</td>";
         sTabla += "<td>" + this.nifGuardia + "</td>";
         sTabla += "<td>" + this.importe + "</td>";
         sTabla += "<td>" + this.pagada + "</td>";
@@ -107,28 +107,25 @@ class Grave extends Multa {
 
 /////////// CLASES DE LA FORMA ANTIGUA /////////////////
 //CLASE PERSONA CON SUS METODOS//
-function Persona(sNif, sNombre, sApellidos, sDireccion)
-{
+function Persona(sNif, sNombre, sApellidos, sDireccion) {
     this.nif = sNif;
     this.nombre = sNombre;
     this.apellidos = sApellidos;
     this.direccion = sDireccion;
 }
 
-Persona.prototype.toHTMLrow = function()
-{
-    let sFila = "<tr>";
-    sFila += "<td>" + this.nif + "</td>";
-    sFila += "<td>" + this.nombre + "</td>";
-    sFila += "<td>" + this.apellidos + "</td>";
-    sFila += "<td>" + this.direccion + "</td></tr>";
+Persona.prototype.toHTMLrow = function() {
+        let sFila = "<tr>";
+        sFila += "<td>" + this.nif + "</td>";
+        sFila += "<td>" + this.nombre + "</td>";
+        sFila += "<td>" + this.apellidos + "</td>";
+        sFila += "<td>" + this.direccion + "</td></tr>";
 
-    return sFila;
-}
-////////////////////////////////////////////////
-//CLASE CONDUCTOR Y SUS METODOS//
-function Conductor(sNif, sNombre, sApellidos, sDireccion, dtCaducidadCarnet)
-{
+        return sFila;
+    }
+    ////////////////////////////////////////////////
+    //CLASE CONDUCTOR Y SUS METODOS//
+function Conductor(sNif, sNombre, sApellidos, sDireccion, dtCaducidadCarnet) {
     Persona.apply(this, [sNif, sNombre, sApellidos, sDireccion]);
     this.caducidadCarnet = dtCaducidadCarnet;
 }
@@ -136,8 +133,7 @@ function Conductor(sNif, sNombre, sApellidos, sDireccion, dtCaducidadCarnet)
 Conductor.prototype = Object.create(Persona.prototype);
 Conductor.prototype.constructor = Conductor;
 
-Conductor.prototype.toHTMLrow = function()
-{
+Conductor.prototype.toHTMLrow = function() {
     let sFila = "<tr>";
     sFila += "<td>" + this.nif + "</td>";
     sFila += "<td>" + this.nombre + "</td>";
@@ -152,8 +148,7 @@ Conductor.prototype.toHTMLrow = function()
 
 //CLASE GUARDIA CIVIL Y SUS METODOS//
 
-function GuardiaCivil(sNif, sNombre, sApellidos, sDireccion, sPuesto )
-{
+function GuardiaCivil(sNif, sNombre, sApellidos, sDireccion, sPuesto) {
     Persona.apply(this, [sNif, sNombre, sApellidos, sDireccion]);
     this.puesto = sPuesto;
 }
@@ -161,8 +156,7 @@ function GuardiaCivil(sNif, sNombre, sApellidos, sDireccion, sPuesto )
 GuardiaCivil.prototype = Object.create(Persona.prototype);
 GuardiaCivil.prototype.constructor = GuardiaCivil;
 
-GuardiaCivil.prototype.toHTMLrow = function()
-{
+GuardiaCivil.prototype.toHTMLrow = function() {
     let sFila = "<tr>";
     sFila += "<td>" + this.nif + "</td>";
     sFila += "<td>" + this.nombre + "</td>";
