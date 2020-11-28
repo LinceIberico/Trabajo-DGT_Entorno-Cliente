@@ -113,14 +113,14 @@ class DGT {
 // Clase Multa
 class Multa {
 
-    constructor(idMulta, nifConductor, nifGuardia, importe, pagada, descripcion, fecha) {
-        this.idMulta = idMulta;
-        this.nifConductor = nifConductor;
-        this.nifGuardia = nifGuardia;
-        this.importe = importe;
-        this.pagada = pagada || false;
-        this.descripcion = descripcion;
-        this.fecha = fecha;
+    constructor(iIdMulta, sNifConductor, sNifGuardia, iImporte, bPagada, sDescripcion, dFecha) {
+        this.idMulta = iIdMulta;
+        this.nifConductor = sNifConductor;
+        this.nifGuardia = sNifGuardia;
+        this.importe = iImporte;
+        this.pagada = bPagada || false;
+        this.descripcion = sDescripcion;
+        this.fecha = dFecha;
     }
     get idMulta() {
         return this.idMulta;
