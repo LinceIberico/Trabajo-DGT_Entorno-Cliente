@@ -1,4 +1,116 @@
 "use strict";
+// Clase DGT
+
+
+class DGT {
+    constructor(_personas, _multas) {
+        this._personas = [oConductor, oGuardiaCivil];
+        this._multas = [];
+    }
+
+    altaConductor(oConductor) {
+        let oConductorExistente = null;
+
+        oConductorExistente = this._buscarConductor(oConductor.nifConductor);
+
+        // Si el conductor no existe lo inserto
+        if (oConductorExistente == null) {
+            this.Conductor.push(oConductor);
+        } else {
+            alert("Conductor ya existente");
+        }
+    }
+
+    _buscarConductor(nifConductor) {
+        let oConductorExistente = null;
+
+        oConductorExistente = this._personas.find(function(oConductor) {
+            return oConductor.nifConductor == nifConductor;
+        });
+
+        // oConductorExistente = this._personas.find(oConductor => oConductor.nifConductor == nifConductor);
+
+        // return oConductorExistente;
+    }
+
+    altaGuardiaCivil(oGuardiaCivil) {
+        let oGuardiaExistente = null;
+
+        oGuardiaExistente = this._buscarGuardia(oGuardiaCivil.nifGuardia);
+
+        // Si el guardia no existe lo inserto
+        if (oGuardiaExistente == null) {
+            this.GuardiaCivil.push(oGuardiaCivil);
+        } else {
+            alert("Guardia Civil ya existente");
+        }
+    }
+
+    _buscarGuardia(nifGuardia) {
+        let oGuardiaExistente = null;
+
+        oGuardiaExistente = this._personas.find(function(oGuardiaCivil) {
+            return oGuardiaCivil.nifGuardia == nifGuardia;
+        });
+
+        // oGuardiaExistente = this._personas.find(oGuardiaCivil => oGuardiaCivil.nifGuardia == nifGuardia);
+
+        // return oGuardiaExistente;
+    }
+
+    listadoConductores() {
+        let sTabla = '<table border="1">';
+
+        // Encabezado de la tabla
+        sTabla += "<thead><tr>";
+        sTabla += "<th>NIF</th><th>Nombre</th>";
+        sTabla += "<th>Apellidos</th><th>Dirección</th><th>Caducidad Carnet</th>";
+        sTabla += "</tr></thead>";
+
+        // Contenido de la tabla
+        sTabla += "<tbody>";
+
+        // Obtenemos array que no tiene NIF Nulos
+        let oConductorAux = this._personas.filter(oConductorAux => oConductorAux.sNif != null);
+
+
+        for (let oP of oConductorAux) {
+            sTabla += oP.toHTMLRow();
+        }
+
+        sTabla += "</tbody>";
+
+        return sTabla;
+    }
+
+    listadoGuardiaCivil() {
+        let sTabla = '<table border="1">';
+
+        // Encabezado de la tabla
+        sTabla += "<thead><tr>";
+        sTabla += "<th>NIF</th><th>Nombre</th>";
+        sTabla += "<th>Apellidos</th><th>Dirección</th><th>Puesto</th>";
+        sTabla += "</tr></thead>";
+
+        // Contenido de la tabla
+        sTabla += "<tbody>";
+
+        // Obtenemos array que no tiene NIF Nulos
+        let oGuardiaAux = this._personas.filter(oGuardiaCivil => oGuardiaCivil.sNombre != null);
+
+
+        for (let oP of oGuardiaAux) {
+            sTabla += oP.toHTMLRow();
+        }
+
+        sTabla += "</tbody>";
+
+        return sTabla;
+    }
+
+}
+
+
 // Clase Multa
 class Multa {
 
@@ -7,7 +119,7 @@ class Multa {
         this.nifConductor = nifConductor;
         this.nifGuardia = nifGuardia;
         this.importe = importe;
-        this.pagada = pagada;
+        this.pagada = pagada || false;
         this.descripcion = descripcion;
         this.fecha = fecha;
     }
@@ -92,7 +204,7 @@ class Leve extends Multa {
 
     constructor(idMulta, nifConductor, nifGuardia, importe, pagada, descripcion, fecha, bonificada) {
         super(idMulta, nifConductor, nifGuardia, importe, pagada, descripcion, fecha);
-        this.bonificada = bonificada;
+        this.bonificada = bonificada || false;
     }
 }
 
@@ -144,6 +256,13 @@ Conductor.prototype.toHTMLrow = function() {
     return sFila;
 }
 
+var conductor1 = new Conductor();
+conductor1.nif = "12345678A";
+conductor1.nombre = "Dom";
+conductor1.apellidos = "Toretto";
+conductor1.direccion = "Su casa CP";
+conductor1.caducidadCarnet = "March 21, 2025";
+
 ////////////////////////////////////////////////
 
 //CLASE GUARDIA CIVIL Y SUS METODOS//
@@ -166,5 +285,13 @@ GuardiaCivil.prototype.toHTMLrow = function() {
 
     return sFila;
 }
+
+var guardia1 = new GuardiaCivil();
+guardia1.nif = "87654321B";
+guardia1.nombre = "Marcelino";
+guardia1.apellidos = "Arensivia";
+guardia1.direccion = "Su cuartel CP";
+guardia1.puesto = "Sargento";
+
 
 ////////////////////////////////////////////////
