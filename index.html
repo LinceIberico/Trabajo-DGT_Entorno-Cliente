@@ -8,8 +8,17 @@
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
     <title>Aplicación DGT</title>
 </head>
 
@@ -19,7 +28,7 @@
             <fieldset>
 
                 <!-- Form Name -->
-                <legend>Dirección General de Tráfico - Menú Principal</legend>
+                <legend>Menú principal</legend>
 
                 <!-- Button -->
                 <div class="form-group">
@@ -49,7 +58,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="btnPagarMulta">Pagar multa</label>
                     <div class="col-md-4">
-                        <input type="button" id="btnPagarMulta" name="btnPagarMulta" class="btn btn-primary" value="Pagar" onclick="" />
+                        <input type="button" id="btnPagarMulta" name="btnPagarMulta" class="btn btn-primary" value="Pagar" data-toggle="modal" data-target="#pagarMulta" />
                     </div>
                 </div>
 
@@ -73,7 +82,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="btnListadoMultasPorGuardia">Listado multas por guardia</label>
                     <div class="col-md-4">
-                        <input type="button" id="btnListadoMultasPorGuardia" name="btnListadoMultasPorGuardia" class="btn btn-primary" value="Mostrar listado" onclick="" />
+                        <input type="button" id="btnListadoMultasPorGuardia" name="btnListadoMultasPorGuardia" class="btn btn-primary" value="Mostrar listado" data-toggle="modal" data-target="#multasPorGuardia" />
                     </div>
                 </div>
 
@@ -81,7 +90,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="btnMultasPorFecha">Listado multas por fecha</label>
                     <div class="col-md-4">
-                        <input type="button" id="btnMultasPorFecha" name="btnMultasPorFecha" class="btn btn-primary" value="Aceptar" onclick="" />
+                        <input type="button" id="btnMultasPorFecha" name="btnMultasPorFecha" class="btn btn-primary" value="Aceptar" data-toggle="modal" data-target="#multasPorFecha" />
                     </div>
                 </div>
 
@@ -105,7 +114,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="btnImprimirMulta">Imprimir multa</label>
                     <div class="col-md-4">
-                        <input type="button" id="btnImprimirMulta" name="btnImprimirMulta" class="btn btn-primary" value="Imprimir" onclick="" />
+                        <input type="button" id="btnImprimirMulta" name="btnImprimirMulta" class="btn btn-primary" value="Imprimir" data-toggle="modal" data-target="#imprimirMulta" />
                     </div>
                 </div>
 
@@ -119,7 +128,6 @@
 
 
     <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-
 
     <!--Modal Alta Conductor-->
 
@@ -140,7 +148,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="txtNIF">NIF</label>
                                     <div class="col-md-4">
-                                        <input id="txtNIF" name="txtNIF" type="text" placeholder="NIF" class="form-control input-md">
+                                        <input id="txtNIF" name="txtNIF" type="text" placeholder="NIF" class="form-control input-md" required>
 
                                     </div>
                                 </div>
@@ -149,7 +157,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="txtNombre">Nombre</label>
                                     <div class="col-md-4">
-                                        <input id="txtNombre" name="txtNombre" type="text" placeholder="Nombre" class="form-control input-md">
+                                        <input id="txtNombre" name="txtNombre" type="text" placeholder="Nombre" class="form-control input-md" required>
 
                                     </div>
                                 </div>
@@ -158,7 +166,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="txtApellidosConductor">Apellidos</label>
                                     <div class="col-md-4">
-                                        <input id="txtApellidosConductor" name="txtApellidosConductor" type="text" placeholder="Apellidos" class="form-control input-md">
+                                        <input id="txtApellidosConductor" name="txtApellidosConductor" type="text" placeholder="Apellidos" class="form-control input-md" required>
 
                                     </div>
                                 </div>
@@ -167,14 +175,14 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="txtDireccionConductor">Dirección</label>
                                     <div class="col-md-4">
-                                        <input id="txtDireccionConductor" name="txtDireccionConductor" type="text" placeholder="Direccion" class="form-control input-md">
+                                        <input id="txtDireccionConductor" name="txtDireccionConductor" type="text" placeholder="Direccion" class="form-control input-md" required>
 
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="txtFechaCaducidad">Caducidad carnet</label>
                                     <div class="col-md-4">
-                                        <input id="txtFechaCaducidad" name="txtFechaCaducidad" type="date" placeholder="Caducidad" class="form-control input-md">
+                                        <input id="txtFechaCaducidad" name="txtFechaCaducidad" type="date" placeholder="Caducidad" class="form-control input-md" required>
 
                                     </div>
                                 </div>
@@ -221,7 +229,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="txtNIF">NIF</label>
                                     <div class="col-md-4">
-                                        <input id="txtNIF" name="txtNIF" type="text" placeholder="NIF" class="form-control input-md">
+                                        <input id="txtNIF" name="txtNIF" type="text" placeholder="NIF" class="form-control input-md" required>
 
                                     </div>
                                 </div>
@@ -230,7 +238,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="txtNombre">Nombre</label>
                                     <div class="col-md-4">
-                                        <input id="txtNombre" name="txtNombre" type="text" placeholder="Nombre" class="form-control input-md">
+                                        <input id="txtNombre" name="txtNombre" type="text" placeholder="Nombre" class="form-control input-md" required>
 
                                     </div>
                                 </div>
@@ -239,7 +247,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="txtApellidosConductor">Apellidos</label>
                                     <div class="col-md-4">
-                                        <input id="txtApellidosConductor" name="txtApellidosConductor" type="text" placeholder="Apellidos" class="form-control input-md">
+                                        <input id="txtApellidosConductor" name="txtApellidosConductor" type="text" placeholder="Apellidos" class="form-control input-md" required>
 
                                     </div>
                                 </div>
@@ -248,14 +256,14 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="txtDireccionConductor">Dirección</label>
                                     <div class="col-md-4">
-                                        <input id="txtDireccionConductor" name="txtDireccionConductor" type="text" placeholder="Direccion" class="form-control input-md">
+                                        <input id="txtDireccionConductor" name="txtDireccionConductor" type="text" placeholder="Direccion" class="form-control input-md" required>
 
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="txtPuesto">Puesto</label>
                                     <div class="col-md-4">
-                                        <input id="txtPuesto" name="txtPuesto" type="text" placeholder="Puesto" class="form-control input-md">
+                                        <input id="txtPuesto" name="txtPuesto" type="text" placeholder="Puesto" class="form-control input-md" required>
 
                                     </div>
                                 </div>
@@ -424,20 +432,202 @@
 
 
 
+    <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+    <!--Modal Imprimir Multa-->
+
+    <div class="modal" tabindex="-1" role="dialog" id="imprimirMulta">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+
+
+                    <div id="imprimirMulta">
+                        <form id="frmImprimirMulta" class="form-horizontal">
+                            <fieldset>
+                                <!-- Form Name -->
+                                <legend>Imprimir Multa</legend>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="txtidMulta">ID Multa</label>
+                                    <div class="col-md-4">
+                                        <input id="txtidMulta" name="txtidMulta" type="number" placeholder="ID Multa" class="form-control input-md" required>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="btnImprimirMulta"></label>
+                                    <div class="col-md-4">
+                                        <input type="button" id="btnImprimirMulta" name="btnImprimirMulta" class="btn btn-primary" value="Imprimir Multa" onclick="" />
+                                        <br>
+                                        <input type="button" id="btnVolver" name="btnVolver" class="btn btn-primary" value="Cerrar" data-dismiss="modal" />
+                                    </div>
+                                </div>
+
+
+                            </fieldset>
+                        </form>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+    <!--Modal Multa por Fecha-->
+
+    <div class="modal" tabindex="-1" role="dialog" id="multasPorFecha">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+
+
+                    <div id="multasPorFecha">
+                        <form id="frmMultasPorFecha" class="form-horizontal">
+                            <fieldset>
+                                <!-- Form Name -->
+                                <legend>Multas por Fecha</legend>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="dtFecha">Fecha Inicio</label>
+                                    <div class="col-md-4">
+                                        <input id="dtFecha" name="dtFecha" type="date" placeholder="Fecha" class="form-control input-md">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="dtFecha">Fecha Fin</label>
+                                    <div class="col-md-4">
+                                        <input id="dtFecha" name="dtFecha" type="date" placeholder="Fecha" class="form-control input-md">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="btnMultasPorFecha"></label>
+                                    <div class="col-md-4">
+                                        <input type="button" id="btnMultasPorFecha" name="btnMultasPorFecha" class="btn btn-primary" value="Mostrar Listado" onclick="" />
+                                        <br>
+                                        <input type="button" id="btnVolver" name="btnVolver" class="btn btn-primary" value="Cerrar" data-dismiss="modal" />
+                                    </div>
+                                </div>
+
+
+                            </fieldset>
+                        </form>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+    <!--Modal Multa por Guardia-->
+
+    <div class="modal" tabindex="-1" role="dialog" id="multasPorGuardia">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+
+
+                    <div id="multasPorGuardia">
+                        <form id="frmMultasPorGuardia" class="form-horizontal">
+                            <fieldset>
+                                <!-- Form Name -->
+                                <legend>Multas por Guardia</legend>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="txtNIF">NIF del Guardia Civil</label>
+                                    <div class="col-md-4">
+                                        <input id="txtNIF" name="txtNIF" type="text" placeholder="NIF" class="form-control input-md" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="btnMultasPorGuardia"></label>
+                                    <div class="col-md-4">
+                                        <input type="button" id="btnMultasPorGuardia" name="btnMultasPorGuardia" class="btn btn-primary" value="Mostrar Listado" onclick="" />
+                                        <br>
+                                        <input type="button" id="btnVolver" name="btnVolver" class="btn btn-primary" value="Cerrar" data-dismiss="modal" />
+                                    </div>
+                                </div>
+
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
+    <!--Modal Pagar Multa-->
+
+    <div class="modal" tabindex="-1" role="dialog" id="pagarMulta">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+                <div class="modal-body">
+
+                    <div id="pagarMulta">
+                        <form id="frmPagarMulta" class="form-horizontal">
+                            <fieldset>
+                                <!-- Form Name -->
+                                <legend>Pagar Multa</legend>
+
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="txtidMulta">ID Multa</label>
+                                    <div class="col-md-4">
+                                        <input id="txtidMulta" name="txtidMulta" type="number" placeholder="ID Multa" class="form-control input-md" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="btnPagarMulta"></label>
+                                    <div class="col-md-4">
+                                        <input type="button" id="btnPagarMulta" name="btnPagarMulta" class="btn btn-primary" value="Pagar Multa" onclick="" />
+                                        <br>
+                                        <input type="button" id="btnVolver" name="btnVolver" class="btn btn-primary" value="Cerrar" data-dismiss="modal" />
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
 
     <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
 
     <div id="mensajes" style="margin-left: 35%;"></div>
-    <script type="text/javascript" src="objeto.js"></script>
+    <script type="text/javascript" src="objetos.js"></script>
     <script type="text/javascript" src="codigo.js"></script>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
 
 </body>
 

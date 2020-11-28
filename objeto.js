@@ -110,7 +110,6 @@ class DGT {
 
 }
 
-
 // Clase Multa
 class Multa {
 

@@ -1,4 +1,5 @@
 "use strict";
+
 var oGuardiaCivil = new GuardiaCivil();
 var oConductor = new Conductor();
 var oDGT = new DGT();
