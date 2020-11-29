@@ -92,7 +92,8 @@ function aceptarAltaGuardiaCivil()
     }
 }
 
-function registrarMulta() {
+function registrarMulta() 
+{
     let oFormularioRegistrarMulta = document.getElementById("frmRegistrarMulta");
     let oMensajes = document.getElementById("mensajesAltaMulta");
 
@@ -133,6 +134,16 @@ function registrarMulta() {
         oMensajes.innerHTML = "<p style='color:red'>" + "Error, la multa que intenta introducir ya existe" + "</p>";
     }
 
+}
+
+function aceptarPagoMulta()
+{
+    let oFormularioPagarMulta = document.getElementById("frmPagarMulta");
+    let oMensajes = document.getElementById("mensajesPagoMulta");
+    let idMulta = oFormularioPagarMulta.txtidMulta.value.trim();
+
+    oMensajes.innerHTML = oDGT.pagarMulta(idMulta)
+    limpiarCampos();
 }
 
 function listadoSaldoConductor() {

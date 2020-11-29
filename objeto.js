@@ -57,6 +57,33 @@ class DGT
         return bResultado;
     }
 
+    pagarMulta(idMulta)
+    {
+        let sCadena ="";
+        let multaAEncontrar = this._multas.find(oP => oP.idMulta == idMulta)
+        
+        if(multaAEncontrar)
+        {
+            if(multaAEncontrar.pagada == true)
+            {
+                sCadena ="<p style='color:red'>" + "Multa pagada anteriormente" + "</p>";
+            }
+            else
+            {
+                multaAEncontrar.pagada = true;
+                sCadena = "<p style='color:green'>" + "Multa pagada" + "</p>";
+            }
+
+        }
+        else
+        {
+            sCadena = "<p style='color:red'>" +  "Multa no registrada" + "</p>";
+        }
+
+        return sCadena;
+    }
+
+
     listadoSaldoConductor() {
         let sTabla = '<table border="1">';
         sTabla += "<thead><tr>";
