@@ -192,6 +192,12 @@ class Leve extends Multa {
         super(idMulta, nifConductor, nifGuardia, importe, pagada, descripcion, fecha);
         this.bonificada = bonificada || false;
     }
+    get bonificada() {
+        return this.bonificada;
+    }
+    set bonificada(valor) {
+        this.bonificada = valor;
+    }
 }
 
 //Clase Grave
@@ -200,6 +206,12 @@ class Grave extends Multa {
     constructor(idMulta, nifConductor, nifGuardia, importe, pagada, descripcion, fecha, puntos) {
         super(idMulta, nifConductor, nifGuardia, importe, pagada, descripcion, fecha);
         this.puntos = puntos;
+    }
+    get puntos() {
+        return this.puntos;
+    }
+    set puntos(valor) {
+        this.puntos = valor;
     }
 }
 

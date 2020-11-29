@@ -72,14 +72,14 @@ function registrarMulta() {
     let oFormularioRegistrarMulta = document.getElementById("frmRegistrarMulta");
     let oMensajes = document.getElementById("mensajes");
 
-    let iIdMulta = oFormularioRegistrarMulta.txtidMulta.value.trim();
+    let iIdMulta = parseInt(oFormularioRegistrarMulta.txtidMulta.value.trim());
     let sNifConductor = oFormularioRegistrarMulta.txtNifConductor.value.trim();
     let sNifGuardia = oFormularioRegistrarMulta.txtNifGuardiaCivil.value.trim();
     let sImporte = oFormularioRegistrarMulta.txtImporte.value.trim();
     let sDescripcion = oFormularioRegistrarMulta.txtDescripcion.value.trim();
     let dtFecha = oFormularioRegistrarMulta.dtFecha.value.trim();
     let sRadioLeveGrave = oFormularioRegistrarMulta.radioLevedad.value;
-    let sRadioBonificada = oFormularioRegistrarMulta.sRadioBonificada.value;
+    let sRadioBonificada = oFormularioRegistrarMulta.sRadioBonificada.checked;
     let iPuntos = oFormularioRegistrarMulta.txtPuntosPerdidos.value.trim();
 
     let nuevoRegistroMulta = new Multa(iIdMulta, sNifConductor, sNifGuardia, sImporte, sDescripcion, dtFecha, sRadioLeveGrave, sRadioBonificada, iPuntos);
@@ -101,16 +101,14 @@ function listadoSaldoConductor() {
 
 function listadoConductores() {
     let sListado = oDGT.listadoConductores();
-    let oVentana = open();
-    oVentana.document.body.innerHTML = sListado;
+    document.getElementById('listados').innerHTML = sListado;
 }
 
 function listadoGuardiaCivil() {
     let sListado = oDGT.listadoGuardiaCivil();
-    let oVentana = open();
-    oVentana.document.body.innerHTML = sListado;
-}
 
+    document.getElementById('listados').innerHTML = sListado;
+}
 
 
 ////////////////////////////////////////////////
