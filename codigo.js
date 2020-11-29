@@ -16,7 +16,7 @@ function datosIniciales() {
     oDGT.altaGuardiaCivil(new GuardiaCivil("5138", "Jesús", "Guillén", "Calle Perejil", "Teniente"));
     oDGT.altaGuardiaCivil(new GuardiaCivil("8888", "Carmen", "Caballero", "Calle Genciana", "Comandante"));
 
-    oDGT.registrarMulta(new Multa(1, "7777", "1973", "300", " ", "2020-11-20", true, false, "3"));
+     oDGT.registrarMulta(new Multa(123, "6548", "5138", 660, "Sobrepasa tasa de alcohol", "2020-7-5", 4));
 
 }
 
@@ -69,23 +69,39 @@ function aceptarAltaGuardiaCivil() {
 }
 
 function registrarMulta() {
-    let oFormularioRegistrarMulta = document.getElementById("frmRegistrarMulta");
-    let oMensajes = document.getElementById("mensajes");
+   let oFormularioRegistrarMulta = document.getElementById("frmRegistrarMulta");
+    let oMensajes = document.getElementById("mensajesAltaMulta");
 
-    let iIdMulta = parseInt(oFormularioRegistrarMulta.txtidMulta.value.trim());
+    let iIdMulta = oFormularioRegistrarMulta.txtidMulta.value.trim();
     let sNifConductor = oFormularioRegistrarMulta.txtNifConductor.value.trim();
     let sNifGuardia = oFormularioRegistrarMulta.txtNifGuardiaCivil.value.trim();
     let sImporte = oFormularioRegistrarMulta.txtImporte.value.trim();
     let sDescripcion = oFormularioRegistrarMulta.txtDescripcion.value.trim();
     let dtFecha = oFormularioRegistrarMulta.dtFecha.value.trim();
     let sRadioLeveGrave = oFormularioRegistrarMulta.radioLevedad.value;
-    let sRadioBonificada = oFormularioRegistrarMulta.sRadioBonificada.checked;
-    let iPuntos = oFormularioRegistrarMulta.txtPuntosPerdidos.value.trim();
 
-    let nuevoRegistroMulta = new Multa(iIdMulta, sNifConductor, sNifGuardia, sImporte, sDescripcion, dtFecha, sRadioLeveGrave, sRadioBonificada, iPuntos);
+    let  nuevoRegistroMulta;
 
-    if (oDGT.altaMulta(nuevoRegistroMulta)) {
-        oMensajes.innerHTML = "<p style='color:green'>" + "Multa registrada correctamente" + "</p>";
+    if(sRadioLeveGrave == "grave")
+    {
+        let iPuntos = oFormularioRegistrarMulta.txtPuntosPerdidos.value.trim();
+        nuevoRegistroMulta = new Multa(iIdMulta, sNifConductor, sNifGuardia, sImporte, sDescripcion, dtFecha, iPuntos)
+    }
+    else
+    {
+        if(document.getElementById("radioBonificada").checked)
+        {
+            nuevoRegistroMulta = new Multa(iIdMulta, sNifConductor, sNifGuardia, sImporte, sDescripcion, dtFecha, true)
+        }
+        else
+        {
+            nuevoRegistroMulta = new Multa(iIdMulta, sNifConductor, sNifGuardia, sImporte, sDescripcion, dtFecha, false)
+        }
+         
+    if (oDGT.registrarMulta(nuevoRegistroMulta)) 
+    {
+        oMensajes.innerHTML = "<p style='color:green'> Multa registrada correctamente </p>";
+        console.log(oMensajes);
         limpiarCampos();
     } else {
         oMensajes.innerHTML = "<p style='color:red'>" + "Error, la multa que intenta introducir ya existe" + "</p>";
