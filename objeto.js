@@ -41,6 +41,22 @@ class DGT {
         return bResultado;
     }
 
+    listadoSaldoConductor() {
+        let sTabla = '<table border="1">';
+        sTabla += "<thead><tr>";
+        sTabla += "<th>NIF</th><th>Saldo Pendiente</th>";
+        sTabla += "</tr></thead>";
+
+        sTabla += "<tbody>";
+        let oConductor = this._personas.filter(oP => oP instanceof Multa)
+        for (let i = 0; i < oConductor.length; i++) {
+            sTabla += oConductor[i].toHTMLrow();
+        }
+        sTabla += "</tbody>";
+
+        return sTabla;
+
+    }
 
     listadoConductores() {
         let sTabla = '<table border="1">';

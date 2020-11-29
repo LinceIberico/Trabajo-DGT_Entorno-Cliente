@@ -16,6 +16,8 @@ function datosIniciales() {
     oDGT.altaGuardiaCivil(new GuardiaCivil("5138", "Jesús", "Guillén", "Calle Perejil", "Teniente"));
     oDGT.altaGuardiaCivil(new GuardiaCivil("8888", "Carmen", "Caballero", "Calle Genciana", "Comandante"));
 
+    oDGT.registrarMulta(new Multa(1, "7777", "1973", "300", " ", "2020-11-20", true, false, "3"));
+
 }
 
 function limpiarCampos() {
@@ -76,8 +78,8 @@ function registrarMulta() {
     let sImporte = oFormularioRegistrarMulta.txtImporte.value.trim();
     let sDescripcion = oFormularioRegistrarMulta.txtDescripcion.value.trim();
     let dtFecha = oFormularioRegistrarMulta.dtFecha.value.trim();
-    let sRadioLeveGrave = oFormularioRegistrarMulta.radioLevedad.value.trim();
-    let sRadioBonificada = oFormularioRegistrarMulta.sRadioBonificada.checked;
+    let sRadioLeveGrave = oFormularioRegistrarMulta.radioLevedad.value;
+    let sRadioBonificada = oFormularioRegistrarMulta.sRadioBonificada.value;
     let iPuntos = oFormularioRegistrarMulta.txtPuntosPerdidos.value.trim();
 
     let nuevoRegistroMulta = new Multa(iIdMulta, sNifConductor, sNifGuardia, sImporte, sDescripcion, dtFecha, sRadioLeveGrave, sRadioBonificada, iPuntos);
@@ -91,6 +93,12 @@ function registrarMulta() {
 
 }
 
+function listadoSaldoConductor() {
+    let sListado = oDGT.listadoSaldoConductor();
+    let oVentana = open();
+    oVentana.document.body.innerHTML = sListado;
+}
+
 function listadoConductores() {
     let sListado = oDGT.listadoConductores();
     let oVentana = open();
@@ -102,5 +110,7 @@ function listadoGuardiaCivil() {
     let oVentana = open();
     oVentana.document.body.innerHTML = sListado;
 }
+
+
 
 ////////////////////////////////////////////////
