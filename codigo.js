@@ -15,6 +15,7 @@ function datosIniciales() {
     oDGT.altaGuardiaCivil(new GuardiaCivil("8246", "Mariano", "Parrado", "Edificio España", "Brigada"));
     oDGT.altaGuardiaCivil(new GuardiaCivil("5138", "Jesús", "Guillén", "Calle Perejil", "Teniente"));
     oDGT.altaGuardiaCivil(new GuardiaCivil("8888", "Carmen", "Caballero", "Calle Genciana", "Comandante"));
+
 }
 
 function limpiarCampos() {
@@ -64,15 +65,39 @@ function aceptarAltaGuardiaCivil() {
         oMensajes.innerHTML = "<p style='color:red'>" + "Error, el guardia civil que intenta introducir ya existe" + "</p>";
     }
 }
-function listadoConductores()
-{
+
+function registrarMulta() {
+    let oFormularioRegistrarMulta = document.getElementById("frmRegistrarMulta");
+    let oMensajes = document.getElementById("mensajes");
+
+    let iIdMulta = oFormularioRegistrarMulta.txtidMulta.value.trim();
+    let sNifConductor = oFormularioRegistrarMulta.txtNifConductor.value.trim();
+    let sNifGuardia = oFormularioRegistrarMulta.txtNifGuardiaCivil.value.trim();
+    let sImporte = oFormularioRegistrarMulta.txtImporte.value.trim();
+    let sDescripcion = oFormularioRegistrarMulta.txtDescripcion.value.trim();
+    let dtFecha = oFormularioRegistrarMulta.dtFecha.value.trim();
+    let sRadioLeveGrave = oFormularioRegistrarMulta.radioLevedad.value.trim();
+    let sRadioBonificada = oFormularioRegistrarMulta.sRadioBonificada.checked;
+    let iPuntos = oFormularioRegistrarMulta.txtPuntosPerdidos.value.trim();
+
+    let nuevoRegistroMulta = new Multa(iIdMulta, sNifConductor, sNifGuardia, sImporte, sDescripcion, dtFecha, sRadioLeveGrave, sRadioBonificada, iPuntos);
+
+    if (oDGT.altaMulta(nuevoRegistroMulta)) {
+        oMensajes.innerHTML = "<p style='color:green'>" + "Multa registrada correctamente" + "</p>";
+        limpiarCampos();
+    } else {
+        oMensajes.innerHTML = "<p style='color:red'>" + "Error, la multa que intenta introducir ya existe" + "</p>";
+    }
+
+}
+
+function listadoConductores() {
     let sListado = oDGT.listadoConductores();
     let oVentana = open();
     oVentana.document.body.innerHTML = sListado;
 }
 
-function listadoGuardiaCivil()
-{
+function listadoGuardiaCivil() {
     let sListado = oDGT.listadoGuardiaCivil();
     let oVentana = open();
     oVentana.document.body.innerHTML = sListado;

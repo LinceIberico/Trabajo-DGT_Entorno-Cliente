@@ -30,6 +30,16 @@ class DGT {
         }
         return bResultado;
     }
+    altaMulta(oMulta) {
+        let bResultado = true;
+
+        if (this._multas.some(oMulta => oMulta.iIdMulta == oMulta.iIdMulta)) {
+            bResultado = false;
+        } else {
+            this._multas.push(oMulta);
+        }
+        return bResultado;
+    }
 
 
     listadoConductores() {
@@ -135,7 +145,7 @@ class Multa {
 
     listarMulta() {
         //Creamos el listado que contiene el documento de la MULTA
-        let tabla = '<table border="1">';
+        let stabla = '<table border="1">';
 
         sTabla += "<thead><tr>";
         sTabla += "<th>ID</th><th>NIF Conductor</th>";
