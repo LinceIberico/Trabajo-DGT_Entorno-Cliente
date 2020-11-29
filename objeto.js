@@ -8,8 +8,7 @@ class DGT {
         this._multas = [];
     }
 
-    altaConductor(oConductor)
-    {
+    altaConductor(oConductor) {
         let bResultado = true;
 
         if (this._personas.some(oP => oP.nif == oConductor.nif)) {
@@ -20,8 +19,8 @@ class DGT {
         return bResultado;
     }
 
-    altaGuardiaCivil(oGuardiaCivil)
-    {
+
+    altaGuardiaCivil(oGuardiaCivil) {
         let bResultado = true;
 
         if (this._personas.some(oP => oP.nif == oGuardiaCivil.nif)) {
@@ -32,8 +31,8 @@ class DGT {
         return bResultado;
     }
 
-     listadoConductores()
-    {
+
+    listadoConductores() {
         let sTabla = '<table border="1">';
         sTabla += "<thead><tr>";
         sTabla += "<th>NIF</th><th>Nombre</th>";
@@ -43,8 +42,7 @@ class DGT {
         sTabla += "<tbody>";
         let oConductor = this._personas.filter(oP => oP instanceof Conductor)
 
-        for(let i=0; i<oConductor.length; i++)
-        {
+        for (let i = 0; i < oConductor.length; i++) {
             sTabla += oConductor[i].toHTMLrow();
         }
         sTabla += "</tbody>";
@@ -52,8 +50,7 @@ class DGT {
         return sTabla;
     }
 
-    listadoGuardiaCivil()
-    {
+    listadoGuardiaCivil() {
         let sTabla = '<table border="1">';
         sTabla += "<thead><tr>";
         sTabla += "<th>NIF</th><th>Nombre</th>";
@@ -63,14 +60,16 @@ class DGT {
         sTabla += "<tbody>";
         let oGuardiaCivil = this._personas.filter(oP => oP instanceof GuardiaCivil)
 
-        for(let i=0; i<oGuardiaCivil.length; i++)
-        {
+        for (let i = 0; i < oGuardiaCivil.length; i++) {
             sTabla += oGuardiaCivil[i].toHTMLrow();
         }
         sTabla += "</tbody>";
 
         return sTabla;
     }
+
+
+}
 
 // Clase Multa
 class Multa {
@@ -217,13 +216,6 @@ Conductor.prototype.toHTMLrow = function() {
     return sFila;
 }
 
-var conductor1 = new Conductor();
-conductor1.nif = "12345678A";
-conductor1.nombre = "Dom";
-conductor1.apellidos = "Toretto";
-conductor1.direccion = "Su casa CP";
-conductor1.caducidadCarnet = "March 21, 2025";
-
 ////////////////////////////////////////////////
 
 //CLASE GUARDIA CIVIL Y SUS METODOS//
@@ -246,13 +238,6 @@ GuardiaCivil.prototype.toHTMLrow = function() {
 
     return sFila;
 }
-
-var guardia1 = new GuardiaCivil();
-guardia1.nif = "87654321B";
-guardia1.nombre = "Marcelino";
-guardia1.apellidos = "Arensivia";
-guardia1.direccion = "Su cuartel CP";
-guardia1.puesto = "Sargento";
 
 
 ////////////////////////////////////////////////
