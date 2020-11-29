@@ -4,7 +4,6 @@ var oVentanaListado = null;
 
 datosIniciales();
 
-ocultarFormularios();
 
 function datosIniciales()
 {
@@ -69,17 +68,18 @@ function aceptarAltaGuardiaCivil() {
     }
 
 }
-
-function listadoConductores() {
+function listadoConductores()
+{
     let sListado = oDGT.listadoConductores();
-
-    document.getElementById('mensajes').innerHTML = sListado;
+    let oVentana = open();
+    oVentana.document.body.innerHTML = sListado;
 }
 
-function listadoGuardiaCivil() {
+function listadoGuardiaCivil()
+{
     let sListado = oDGT.listadoGuardiaCivil();
-
-    document.getElementById('mensajes').innerHTML = sListado;
+    let oVentana = open();
+    oVentana.document.body.innerHTML = sListado;
 }
 
 ////////////////////////////////////////////////
