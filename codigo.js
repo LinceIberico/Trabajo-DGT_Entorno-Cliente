@@ -64,14 +64,15 @@ function aceptarAltaGuardiaCivil() {
         oMensajes.innerHTML = "<p style='color:red'>" + "Error, el guardia civil que intenta introducir ya existe" + "</p>";
     }
 }
-
-function listadoConductores() {
+function listadoConductores()
+{
     let sListado = oDGT.listadoConductores();
     let oVentana = open();
     oVentana.document.body.innerHTML = sListado;
 }
 
-function listadoGuardiaCivil() {
+function listadoGuardiaCivil()
+{
     let sListado = oDGT.listadoGuardiaCivil();
     let oVentana = open();
     oVentana.document.body.innerHTML = sListado;
