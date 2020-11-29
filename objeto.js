@@ -3,112 +3,74 @@
 
 
 class DGT {
-    constructor(_personas, _multas) {
-        this._personas = [oConductor, oGuardiaCivil];
+    constructor() {
+        this._personas = [];
         this._multas = [];
     }
 
-    altaConductor(oConductor) {
-        let oConductorExistente = null;
+    altaConductor(oConductor)
+    {
+        let bResultado = true;
 
-        oConductorExistente = this._buscarConductor(oConductor.nifConductor);
-
-        // Si el conductor no existe lo inserto
-        if (oConductorExistente == null) {
-            this.Conductor.push(oConductor);
+        if (this._personas.some(oP => oP.nif == oConductor.nif)) {
+            bResultado = false;
         } else {
-            alert("Conductor ya existente");
+            this._personas.push(oConductor);
         }
+        return bResultado;
     }
 
-    _buscarConductor(nifConductor) {
-        let oConductorExistente = null;
+    altaGuardiaCivil(oGuardiaCivil)
+    {
+        let bResultado = true;
 
-        oConductorExistente = this._personas.find(function(oConductor) {
-            return oConductor.nifConductor == nifConductor;
-        });
-
-        // oConductorExistente = this._personas.find(oConductor => oConductor.nifConductor == nifConductor);
-
-        // return oConductorExistente;
-    }
-
-    altaGuardiaCivil(oGuardiaCivil) {
-        let oGuardiaExistente = null;
-
-        oGuardiaExistente = this._buscarGuardia(oGuardiaCivil.nifGuardia);
-
-        // Si el guardia no existe lo inserto
-        if (oGuardiaExistente == null) {
-            this.GuardiaCivil.push(oGuardiaCivil);
+        if (this._personas.some(oP => oP.nif == oGuardiaCivil.nif)) {
+            bResultado = false;
         } else {
-            alert("Guardia Civil ya existente");
+            this._personas.push(oGuardiaCivil);
         }
+        return bResultado;
     }
 
-    _buscarGuardia(nifGuardia) {
-        let oGuardiaExistente = null;
-
-        oGuardiaExistente = this._personas.find(function(oGuardiaCivil) {
-            return oGuardiaCivil.nifGuardia == nifGuardia;
-        });
-
-        // oGuardiaExistente = this._personas.find(oGuardiaCivil => oGuardiaCivil.nifGuardia == nifGuardia);
-
-        // return oGuardiaExistente;
-    }
-
-    listadoConductores() {
+     listadoConductores()
+    {
         let sTabla = '<table border="1">';
-
-        // Encabezado de la tabla
         sTabla += "<thead><tr>";
         sTabla += "<th>NIF</th><th>Nombre</th>";
-        sTabla += "<th>Apellidos</th><th>Dirección</th><th>Caducidad Carnet</th>";
+        sTabla += "<th>Apellidos</th><th>Dirección</th><th>Caducidad del carnet</th>";
         sTabla += "</tr></thead>";
 
-        // Contenido de la tabla
         sTabla += "<tbody>";
+        let oConductor = this._personas.filter(oP => oP instanceof Conductor)
 
-        // Obtenemos array que no tiene NIF Nulos
-        let oConductorAux = this._personas.filter(oConductorAux => oConductorAux.sNif != null);
-
-
-        for (let oP of oConductorAux) {
-            sTabla += oP.toHTMLRow();
+        for(let i=0; i<oConductor.length; i++)
+        {
+            sTabla += oConductor[i].toHTMLrow();
         }
-
         sTabla += "</tbody>";
 
         return sTabla;
     }
 
-    listadoGuardiaCivil() {
+    listadoGuardiaCivil()
+    {
         let sTabla = '<table border="1">';
-
-        // Encabezado de la tabla
         sTabla += "<thead><tr>";
         sTabla += "<th>NIF</th><th>Nombre</th>";
         sTabla += "<th>Apellidos</th><th>Dirección</th><th>Puesto</th>";
         sTabla += "</tr></thead>";
 
-        // Contenido de la tabla
         sTabla += "<tbody>";
+        let oGuardiaCivil = this._personas.filter(oP => oP instanceof GuardiaCivil)
 
-        // Obtenemos array que no tiene NIF Nulos
-        let oGuardiaAux = this._personas.filter(oGuardiaCivil => oGuardiaCivil.sNombre != null);
-
-
-        for (let oP of oGuardiaAux) {
-            sTabla += oP.toHTMLRow();
+        for(let i=0; i<oGuardiaCivil.length; i++)
+        {
+            sTabla += oGuardiaCivil[i].toHTMLrow();
         }
-
         sTabla += "</tbody>";
 
         return sTabla;
     }
-
-}
 
 // Clase Multa
 class Multa {
