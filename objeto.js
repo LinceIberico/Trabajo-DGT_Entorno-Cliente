@@ -2,40 +2,56 @@
 // Clase DGT
 
 
-class DGT {
-    constructor() {
+class DGT 
+{
+    constructor() 
+    {
         this._personas = [];
         this._multas = [];
     }
 
-    altaConductor(oConductor) {
+    altaConductor(oConductor) 
+    {
         let bResultado = true;
 
-        if (this._personas.some(oP => oP.nif == oConductor.nif)) {
+        if (this._personas.some(oP => oP.nif == oConductor.nif)) 
+        {
             bResultado = false;
-        } else {
+        }
+        else 
+        {
             this._personas.push(oConductor);
         }
         return bResultado;
     }
 
 
-    altaGuardiaCivil(oGuardiaCivil) {
+    altaGuardiaCivil(oGuardiaCivil) 
+    {
         let bResultado = true;
 
-        if (this._personas.some(oP => oP.nif == oGuardiaCivil.nif)) {
+        if (this._personas.some(oP => oP.nif == oGuardiaCivil.nif)) 
+        {
             bResultado = false;
-        } else {
+        } 
+        else 
+        {
             this._personas.push(oGuardiaCivil);
         }
         return bResultado;
     }
-    altaMulta(oMulta) {
+
+
+    registrarMulta(oMulta) 
+    {
         let bResultado = true;
 
-        if (this._multas.some(oMulta => oMulta.iIdMulta == oMulta.iIdMulta)) {
+        if (this._multas.some(oM => oM.idMulta == oMulta.idMulta)) 
+        {
             bResultado = false;
-        } else {
+        } 
+        else 
+        {
             this._multas.push(oMulta);
         }
         return bResultado;
@@ -100,64 +116,15 @@ class DGT {
 // Clase Multa
 class Multa {
 
-    constructor(iIdMulta, sNifConductor, sNifGuardia, iImporte, bPagada, sDescripcion, dFecha) {
+    constructor(iIdMulta, sNifConductor, sNifGuardia, iImporte, sDescripcion, dFecha) {
         this.idMulta = iIdMulta;
         this.nifConductor = sNifConductor;
         this.nifGuardia = sNifGuardia;
         this.importe = iImporte;
-        this.pagada = bPagada || false;
+        this.pagada = false;
         this.descripcion = sDescripcion;
         this.fecha = dFecha;
     }
-    get idMulta() {
-        return this.idMulta;
-    }
-    set idMulta(valor) {
-        this.idMulta = valor;
-    }
-
-    get nifConductor() {
-        return this.nifConductor;
-    }
-    set nifConductor(valor) {
-        this.nifConductor = valor;
-    }
-
-    get nifGuardia() {
-        return this.nifGuardia;
-    }
-    set nifGuardia(valor) {
-        this.nifGuardia = valor;
-    }
-
-    get importe() {
-        return this.importe;
-    }
-    set importe(valor) {
-        this.importe = valor;
-    }
-
-    get pagada() {
-        return this.pagada;
-    }
-    set pagada(valor) {
-        this.pagada = valor;
-    }
-
-    get descripcion() {
-        return this.descripcion;
-    }
-    set descripcion(valor) {
-        this.descripcion = valor;
-    }
-
-    get fecha() {
-        return this.fecha;
-    }
-    set fecha(valor) {
-        this.fecha = valor;
-    }
-
 
     listarMulta() {
         //Creamos el listado que contiene el documento de la MULTA
