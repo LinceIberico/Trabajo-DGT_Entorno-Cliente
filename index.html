@@ -198,7 +198,6 @@
                             </fieldset>
                         </form>
                         <div id="mensajesConductores" style="margin-left: 35%;"></div>
-
                     </div>
                 </div>
             </div>
@@ -279,7 +278,6 @@
                             </fieldset>
                         </form>
                         <div id="mensajesGuardiaCiviles" style="margin-left: 35%;"></div>
-
                     </div>
                 </div>
 
@@ -389,7 +387,7 @@
 
                                         <div class="radio">
                                             <label for="radioBonificada-0">
-                                                <input type="radio" name="radioBonificada" id="radioBonificada-0" value="true" disabled>Si
+                                                <input type="checkbox" name="radioBonificada" id="radioBonificada" value="true" disabled>Si
                                             </label>
                                         </div>
 
@@ -416,11 +414,11 @@
                                     <label class="col-md-4 control-label" for="btnEnviarConductor"></label>
                                     <div class="col-md-4">
                                         <input type="button" id="btnRegistrarMulta" name="btnRegistrarMulta" class="btn btn-primary" value="Dar de alta" onclick="registrarMulta();" />
-                                        <input type="button" id="btnVolver" name="btnVolver" class="btn btn-primary" value="Cerrar" data-dismiss="modal" />
+                                        <input type="button" id="btnVolver" name="btnVolver" class="btn btn-primary" value="Cerrar" data-dismiss="modal" onclick="limpiarMensajes()" />
                                     </div>
                                 </div>
 
-
+                                <div id="mensajesAltaMulta" style="margin-left: 35%;" />
                             </fieldset>
                             <div id="mensajesAltaMulta" style="margin-left: 35%;" />
                         </form>
@@ -608,12 +606,14 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="btnPagarMulta"></label>
                                     <div class="col-md-4">
-                                        <input type="button" id="btnPagarMulta" name="btnPagarMulta" class="btn btn-primary" value="Pagar Multa" onclick="" />
+                                        <input type="button" id="btnPagarMulta" name="btnPagarMulta" class="btn btn-primary" value="Pagar Multa" onclick="aceptarPagoMulta()" />
                                         <br>
                                         <input type="button" id="btnVolver" name="btnVolver" class="btn btn-primary" value="Cerrar" data-dismiss="modal" />
                                     </div>
                                 </div>
                             </fieldset>
+                            <div id="mensajesPagoMulta" style="margin-left: 35%;"></div>
+
                         </form>
                     </div>
                 </div>

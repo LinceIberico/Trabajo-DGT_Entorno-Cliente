@@ -27,11 +27,23 @@ function limpiarCampos() {
     document.getElementById("frmAltaGuardiaCivil").reset();
     document.getElementById("frmAltaConductor").reset();
     document.getElementById("frmRegistrarMulta").reset();
+
+}
+
+function limpiarMensajes() {
+    let oMensajesConductores = document.getElementById("mensajesConductores");
+    let oMensajesGuardiaCiviles = document.getElementById("mensajesGuardiaCiviles");
+    let oMensajesAltaMulta = document.getElementById("mensajesAltaMulta");
+
+    oMensajesConductores.innerHTML = "";
+    oMensajesGuardiaCiviles.innerHTML = "";
+    oMensajesAltaMulta.innerHTML = "";
+
 }
 
 function aceptarAltaConductor() {
     let oFormularioConductor = document.getElementById("frmAltaConductor");
-    let oMensajes = document.getElementById("mensajes");
+    let oMensajes = document.getElementById("mensajesConductores");
 
     let sNif = oFormularioConductor.txtNIF.value.trim();
     let sNombre = oFormularioConductor.txtNombre.value.trim();
@@ -53,7 +65,7 @@ function aceptarAltaConductor() {
 
 function aceptarAltaGuardiaCivil() {
     let oFormularioGuardiaCivil = document.getElementById("frmAltaGuardiaCivil");
-    let oMensajes = document.getElementById("mensajes");
+    let oMensajes = document.getElementById("mensajesGuardiaCiviles");
 
     let sNif = oFormularioGuardiaCivil.txtNIF.value.trim();
     let sNombre = oFormularioGuardiaCivil.txtNombre.value.trim();
@@ -73,7 +85,10 @@ function aceptarAltaGuardiaCivil() {
 }
 
 function registrarMulta() {
-   let oFormularioRegistrarMulta = document.getElementById("frmRegistrarMulta");
+  
+    let oFormularioRegistrarMulta = document.getElementById("frmRegistrarMulta");
+
+
     let oMensajes = document.getElementById("mensajesAltaMulta");
 
     let iIdMulta = oFormularioRegistrarMulta.txtidMulta.value.trim();
@@ -84,33 +99,37 @@ function registrarMulta() {
     let dtFecha = oFormularioRegistrarMulta.dtFecha.value.trim();
     let sRadioLeveGrave = oFormularioRegistrarMulta.radioLevedad.value;
 
-    let  nuevoRegistroMulta;
 
-    if(sRadioLeveGrave == "grave")
-    {
+    let nuevoRegistroMulta;
+
+    if (sRadioLeveGrave == "grave") {
         let iPuntos = oFormularioRegistrarMulta.txtPuntosPerdidos.value.trim();
-        nuevoRegistroMulta = new Multa(iIdMulta, sNifConductor, sNifGuardia, sImporte, sDescripcion, dtFecha, iPuntos)
+        nuevoRegistroMulta = new Multa(iIdMulta, sNifConductor, sNifGuardia, sImporte, sDescripcion, dtFecha, iPuntos);
+    } else {
+        if (document.getElementById("radioBonificada").checked) {
+            nuevoRegistroMulta = new Multa(iIdMulta, sNifConductor, sNifGuardia, sImporte, sDescripcion, dtFecha, true);
+        } else {
+            nuevoRegistroMulta = new Multa(iIdMulta, sNifConductor, sNifGuardia, sImporte, sDescripcion, dtFecha, false);
+        }
     }
-    else
-    {
-        if(document.getElementById("radioBonificada").checked)
-        {
-            nuevoRegistroMulta = new Multa(iIdMulta, sNifConductor, sNifGuardia, sImporte, sDescripcion, dtFecha, true)
-        }
-        else
-        {
-            nuevoRegistroMulta = new Multa(iIdMulta, sNifConductor, sNifGuardia, sImporte, sDescripcion, dtFecha, false)
-        }
-         
-    if (oDGT.registrarMulta(nuevoRegistroMulta)) 
-    {
+
+    if (oDGT.registrarMulta(nuevoRegistroMulta)) {
         oMensajes.innerHTML = "<p style='color:green'> Multa registrada correctamente </p>";
-        console.log(oMensajes);
+
         limpiarCampos();
     } else {
         oMensajes.innerHTML = "<p style='color:red'>" + "Error, la multa que intenta introducir ya existe" + "</p>";
     }
 
+}
+
+function aceptarPagoMulta() {
+    let oFormularioPagarMulta = document.getElementById("frmPagarMulta");
+    let oMensajes = document.getElementById("mensajesPagoMulta");
+    let idMulta = oFormularioPagarMulta.txtidMulta.value.trim();
+
+    oMensajes.innerHTML = oDGT.pagarMulta(idMulta)
+    limpiarCampos();
 }
 
 function listadoSaldoConductor() {
@@ -121,14 +140,15 @@ function listadoSaldoConductor() {
 
 function listadoConductores() {
     let sListado = oDGT.listadoConductores();
-    document.getElementById('listados').innerHTML = sListado;
+    document.getElementById("listados").innerHTML = sListado;
 }
 
 function listadoGuardiaCivil() {
     let sListado = oDGT.listadoGuardiaCivil();
-
-    document.getElementById('listados').innerHTML = sListado;
+    document.getElementById("listados").innerHTML = sListado;
 }
 
 
+
 ////////////////////////////////////////////////
+
