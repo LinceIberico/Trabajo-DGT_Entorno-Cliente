@@ -2,82 +2,62 @@
 // Clase DGT
 
 
-class DGT 
-{
-    constructor() 
-    {
+class DGT {
+    constructor() {
         this._personas = [];
         this._multas = [];
     }
 
-    altaConductor(oConductor) 
-    {
+    altaConductor(oConductor) {
         let bResultado = true;
 
-        if (this._personas.some(oP => oP.nif == oConductor.nif)) 
-        {
+        if (this._personas.some(oP => oP.nif == oConductor.nif)) {
             bResultado = false;
-        }
-        else 
-        {
+        } else {
             this._personas.push(oConductor);
         }
         return bResultado;
     }
 
 
-    altaGuardiaCivil(oGuardiaCivil) 
-    {
+    altaGuardiaCivil(oGuardiaCivil) {
         let bResultado = true;
 
-        if (this._personas.some(oP => oP.nif == oGuardiaCivil.nif)) 
-        {
+        if (this._personas.some(oP => oP.nif == oGuardiaCivil.nif)) {
             bResultado = false;
-        } 
-        else 
-        {
+        } else {
             this._personas.push(oGuardiaCivil);
         }
         return bResultado;
     }
 
-    
-     registrarMulta(oMulta) {
+
+    registrarMulta(oMulta) {
 
         let bResultado = true;
 
-        if (this._multas.some(oM => oM.idMulta == oMulta.idMulta)) 
-        {
+        if (this._multas.some(oM => oM.idMulta == oMulta.idMulta)) {
             bResultado = false;
-        } 
-        else 
-        {
+        } else {
             this._multas.push(oMulta);
         }
         return bResultado;
     }
 
-    pagarMulta(idMulta)
-    {
-        let sCadena ="";
+    pagarMulta(idMulta) {
+        let sCadena = "";
         let multaAEncontrar = this._multas.find(oP => oP.idMulta == idMulta)
-        
-        if(multaAEncontrar)
-        {
-            if(multaAEncontrar.pagada == true)
-            {
-                sCadena ="<p style='color:red'>" + "Multa pagada anteriormente" + "</p>";
-            }
-            else
-            {
+
+        if (multaAEncontrar) {
+            if (multaAEncontrar.pagada == true) {
+                sCadena = "<p style='color:red'>" + "Multa pagada anteriormente" + "</p>";
+            } else {
                 multaAEncontrar.pagada = true;
                 sCadena = "<p style='color:green'>" + "Multa pagada" + "</p>";
             }
 
-        }
-        else
-        {
-            sCadena = "<p style='color:red'>" +  "Multa no registrada" + "</p>";
+        } else {
+            sCadena = "<p style='color:red'>" + "Multa no registrada" + "</p>";
         }
 
         return sCadena;
