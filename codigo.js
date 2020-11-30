@@ -5,8 +5,7 @@ var oVentanaListado = null;
 datosIniciales();
 
 
-function datosIniciales() 
-{
+function datosIniciales() {
     oDGT.altaConductor(new Conductor("7777", "Pepe", "Muñoz", "Calle Regaliz", "2021-11-23"));
     oDGT.altaConductor(new Conductor("1234", "Manolo", "Osto", "Calle Tragabuche", "2024-5-4"));
     oDGT.altaConductor(new Conductor("7894", "Antonio", "Rodriguez", "Calle La Nueva", "2019-6-11"));
@@ -29,20 +28,18 @@ function limpiarCampos() {
     document.getElementById("frmRegistrarMulta").reset();
 }
 
-function limpiarMensajes()
-{
+function limpiarMensajes() {
     let oMensajesConductores = document.getElementById("mensajesConductores");
     let oMensajesGuardiaCiviles = document.getElementById("mensajesGuardiaCiviles");
     let oMensajesAltaMulta = document.getElementById("mensajesAltaMulta");
 
-    oMensajesConductores.innerHTML="";
-    oMensajesGuardiaCiviles.innerHTML="";
+    oMensajesConductores.innerHTML = "";
+    oMensajesGuardiaCiviles.innerHTML = "";
     oMensajesAltaMulta.innerHTML = "";
 
 }
 
-function aceptarAltaConductor() 
-{
+function aceptarAltaConductor() {
     let oFormularioConductor = document.getElementById("frmAltaConductor");
     let oMensajes = document.getElementById("mensajesConductores");
 
@@ -55,20 +52,16 @@ function aceptarAltaConductor()
     let nuevoConductor = new Conductor(sNif, sNombre, sApellidos, sDireccion, dtCaducidadCarnet);
 
 
-    if (oDGT.altaConductor(nuevoConductor)) 
-    {
+    if (oDGT.altaConductor(nuevoConductor)) {
         oMensajes.innerHTML = "<p style='color:green'>" + "Conductor dado de alta" + "</p>";
         limpiarCampos();
-    } 
-    else 
-    {
+    } else {
         oMensajes.innerHTML = "<p style='color:red'>" + "Error, el conductor que intenta introducir ya existe" + "</p>";
     }
 
 }
 
-function aceptarAltaGuardiaCivil() 
-{
+function aceptarAltaGuardiaCivil() {
     let oFormularioGuardiaCivil = document.getElementById("frmAltaGuardiaCivil");
     let oMensajes = document.getElementById("mensajesGuardiaCiviles");
 
@@ -81,19 +74,15 @@ function aceptarAltaGuardiaCivil()
     let nuevoGuardiaCivil = new GuardiaCivil(sNif, sNombre, sApellidos, sDireccion, sPuesto);
 
 
-    if (oDGT.altaGuardiaCivil(nuevoGuardiaCivil)) 
-    {
+    if (oDGT.altaGuardiaCivil(nuevoGuardiaCivil)) {
         oMensajes.innerHTML = "<p style='color:green'>" + "Guardia Civil dado de alta" + "</p>";
         limpiarCampos();
-    } 
-    else 
-    {
+    } else {
         oMensajes.innerHTML = "<p style='color:red'>" + "Error, el guardia civil que intenta introducir ya existe" + "</p>";
     }
 }
 
-function registrarMulta() 
-{
+function registrarMulta() {
     let oFormularioRegistrarMulta = document.getElementById("frmRegistrarMulta");
     let oMensajes = document.getElementById("mensajesAltaMulta");
 
@@ -107,37 +96,27 @@ function registrarMulta()
 
     let nuevoRegistroMulta;
 
-    if(sRadioLeveGrave == "grave")
-    {
+    if (sRadioLeveGrave == "grave") {
         let iPuntos = oFormularioRegistrarMulta.txtPuntosPerdidos.value.trim();
         nuevoRegistroMulta = new Multa(iIdMulta, sNifConductor, sNifGuardia, sImporte, sDescripcion, dtFecha, iPuntos);
-    }
-    else
-    {
-        if(document.getElementById("radioBonificada").checked)
-        {
+    } else {
+        if (document.getElementById("radioBonificada").checked) {
             nuevoRegistroMulta = new Multa(iIdMulta, sNifConductor, sNifGuardia, sImporte, sDescripcion, dtFecha, true);
-        }
-        else
-        {
+        } else {
             nuevoRegistroMulta = new Multa(iIdMulta, sNifConductor, sNifGuardia, sImporte, sDescripcion, dtFecha, false);
         }
     }
-         
-    if (oDGT.registrarMulta(nuevoRegistroMulta)) 
-    {
+
+    if (oDGT.registrarMulta(nuevoRegistroMulta)) {
         oMensajes.innerHTML = "<p style='color:green'> Multa registrada correctamente </p>";
         limpiarCampos();
-    } 
-    else 
-    {
+    } else {
         oMensajes.innerHTML = "<p style='color:red'>" + "Error, la multa que intenta introducir ya existe" + "</p>";
     }
 
 }
 
-function aceptarPagoMulta()
-{
+function aceptarPagoMulta() {
     let oFormularioPagarMulta = document.getElementById("frmPagarMulta");
     let oMensajes = document.getElementById("mensajesPagoMulta");
     let idMulta = oFormularioPagarMulta.txtidMulta.value.trim();
@@ -154,11 +133,11 @@ function listadoSaldoConductor() {
 
 function listadoConductores() {
     let sListado = oDGT.listadoConductores();
-    document.getElementById('listados').innerHTML = sListado;
+    document.getElementById("listados").innerHTML = sListado;
 }
 
 function listadoGuardiaCivil() {
     let sListado = oDGT.listadoGuardiaCivil();
 
-    document.getElementById('listados').innerHTML = sListado;
+    document.getElementById("listados").innerHTML = sListado;
 }
