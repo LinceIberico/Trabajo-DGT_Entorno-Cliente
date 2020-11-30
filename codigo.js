@@ -85,7 +85,7 @@ function aceptarAltaGuardiaCivil() {
 }
 
 function registrarMulta() {
-  
+
     let oFormularioRegistrarMulta = document.getElementById("frmRegistrarMulta");
 
 
@@ -113,6 +113,18 @@ function registrarMulta() {
         }
     }
 
+
+
+    /*buscarConductor(sNifConductor) {
+        let nifExistente = null;
+
+        
+        nifExistente = this.oDGT.find(oCoductor => oCoductor.sNifConductor==sNifConductor);
+
+        return nifExistente;
+    }*/
+
+
     if (oDGT.registrarMulta(nuevoRegistroMulta)) {
         oMensajes.innerHTML = "<p style='color:green'> Multa registrada correctamente </p>";
 
@@ -120,6 +132,7 @@ function registrarMulta() {
     } else {
         oMensajes.innerHTML = "<p style='color:red'>" + "Error, la multa que intenta introducir ya existe" + "</p>";
     }
+
 
 }
 
@@ -134,8 +147,7 @@ function aceptarPagoMulta() {
 
 function listadoSaldoConductor() {
     let sListado = oDGT.listadoSaldoConductor();
-    let oVentana = open();
-    oVentana.document.body.innerHTML = sListado;
+    document.getElementById("listados").innerHTML = sListado;
 }
 
 function listadoConductores() {
@@ -148,7 +160,18 @@ function listadoGuardiaCivil() {
     document.getElementById("listados").innerHTML = sListado;
 }
 
+function listadoMultasPorGuardia() {
+    let sListado = oDGT.listadoMultasPorGuardia();
+    document.getElementById("listados").innerHTML = sListado;
+}
+
+function imprimirMulta() {
+    let sListado = oDGT.imprimirMulta();
+    let oVentana = open("", "Multa impresa", "width=875px, height=400px");
+
+    oVentana.document.body.innerHTML = sListado;
+}
+
 
 
 ////////////////////////////////////////////////
-
