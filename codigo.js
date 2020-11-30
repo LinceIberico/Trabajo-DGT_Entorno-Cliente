@@ -14,12 +14,14 @@ function datosIniciales() {
     oDGT.altaGuardiaCivil(new GuardiaCivil("1973", "José", "Delgado", "Avda. España", "Coronel"));
     oDGT.altaGuardiaCivil(new GuardiaCivil("8246", "Mariano", "Parrado", "Edificio España", "Brigada"));
     oDGT.altaGuardiaCivil(new GuardiaCivil("5138", "Jesús", "Guillén", "Calle Perejil", "Teniente"));
-    oDGT.altaGuardiaCivil(new GuardiaCivil("8888", "Carmen", "Caballero", "Calle Genciana", "Comandante"));
 
-    oDGT.registrarMulta(new Multa(321, "7777", "1973", 100, "Mal estacionado", "2020-11-23", false));
-    oDGT.registrarMulta(new Multa(123, "6548", "5138", 660, "Sobrepasa tasa de alcohol", "2020-7-5", 4));
-    oDGT.registrarMulta(new Multa(654, "7777", "1973", 600, "Iba bajo el efecto de estupefacientes", "2020-4-92", true));
-    oDGT.registrarMulta(new Multa(852, "5138", "8888", 100, "Fuera de casa en estado de alarma", "2020-4-5", true));
+
+    oDGT.registrarMulta(new Leve(321, "7777", "1973", 100, "Mal estacionado", "2020-11-23", false));
+    oDGT.registrarMulta(new Grave(123, "6548", "5138", 660, "Sobrepasa tasa de alcohol", "2020-7-5", 4));
+    oDGT.registrarMulta(new Grave(789, "1234", "1973", 900, "Fuera de casa en estado de alarma", "2020-7-5", 3));
+    oDGT.registrarMulta(new Grave(987, "6548", "5138", 1260, "Sobrepasa tasa de alcohol", "2020-7-5", 1));
+    oDGT.registrarMulta(new Leve(654, "7777", "1973", 600, "Iba bajo el efecto de estupefacientes", "2020-4-92", true));
+    oDGT.registrarMulta(new Leve(852, "7894", "8246", 100, "Fuera de casa en estado de alarma", "2020-4-5", true));
 
 }
 
@@ -94,7 +96,7 @@ function registrarMulta() {
     let iIdMulta = oFormularioRegistrarMulta.txtidMulta.value.trim();
     let sNifConductor = oFormularioRegistrarMulta.txtNifConductor.value.trim();
     let sNifGuardia = oFormularioRegistrarMulta.txtNifGuardiaCivil.value.trim();
-    let sImporte = oFormularioRegistrarMulta.txtImporte.value.trim();
+    let sImporte = parseInt(oFormularioRegistrarMulta.txtImporte.value.trim());
     let sDescripcion = oFormularioRegistrarMulta.txtDescripcion.value.trim();
     let dtFecha = oFormularioRegistrarMulta.dtFecha.value.trim();
     let sRadioLeveGrave = oFormularioRegistrarMulta.radioLevedad.value;
@@ -104,25 +106,14 @@ function registrarMulta() {
 
     if (sRadioLeveGrave == "grave") {
         let iPuntos = oFormularioRegistrarMulta.txtPuntosPerdidos.value.trim();
-        nuevoRegistroMulta = new Multa(iIdMulta, sNifConductor, sNifGuardia, sImporte, sDescripcion, dtFecha, iPuntos);
+        nuevoRegistroMulta = new Grave(iIdMulta, sNifConductor, sNifGuardia, sImporte, sDescripcion, dtFecha, iPuntos);
     } else {
         if (document.getElementById("radioBonificada").checked) {
-            nuevoRegistroMulta = new Multa(iIdMulta, sNifConductor, sNifGuardia, sImporte, sDescripcion, dtFecha, true);
+            nuevoRegistroMulta = new Leve(iIdMulta, sNifConductor, sNifGuardia, sImporte, sDescripcion, dtFecha, true);
         } else {
-            nuevoRegistroMulta = new Multa(iIdMulta, sNifConductor, sNifGuardia, sImporte, sDescripcion, dtFecha, false);
+            nuevoRegistroMulta = new Leve(iIdMulta, sNifConductor, sNifGuardia, sImporte, sDescripcion, dtFecha, false);
         }
     }
-
-
-
-    /*buscarConductor(sNifConductor) {
-        let nifExistente = null;
-
-        
-        nifExistente = this.oDGT.find(oCoductor => oCoductor.sNifConductor==sNifConductor);
-
-        return nifExistente;
-    }*/
 
 
     if (oDGT.registrarMulta(nuevoRegistroMulta)) {
