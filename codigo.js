@@ -20,12 +20,14 @@ function datosIniciales() {
     oDGT.registrarMulta(new Multa(123, "6548", "5138", 660, "Sobrepasa tasa de alcohol", "2020-7-5", 4));
     oDGT.registrarMulta(new Multa(654, "7777", "1973", 600, "Iba bajo el efecto de estupefacientes", "2020-4-92", true));
     oDGT.registrarMulta(new Multa(852, "5138", "8888", 100, "Fuera de casa en estado de alarma", "2020-4-5", true));
+
 }
 
 function limpiarCampos() {
     document.getElementById("frmAltaGuardiaCivil").reset();
     document.getElementById("frmAltaConductor").reset();
     document.getElementById("frmRegistrarMulta").reset();
+
 }
 
 function limpiarMensajes() {
@@ -83,7 +85,10 @@ function aceptarAltaGuardiaCivil() {
 }
 
 function registrarMulta() {
+  
     let oFormularioRegistrarMulta = document.getElementById("frmRegistrarMulta");
+
+
     let oMensajes = document.getElementById("mensajesAltaMulta");
 
     let iIdMulta = oFormularioRegistrarMulta.txtidMulta.value.trim();
@@ -93,6 +98,7 @@ function registrarMulta() {
     let sDescripcion = oFormularioRegistrarMulta.txtDescripcion.value.trim();
     let dtFecha = oFormularioRegistrarMulta.dtFecha.value.trim();
     let sRadioLeveGrave = oFormularioRegistrarMulta.radioLevedad.value;
+
 
     let nuevoRegistroMulta;
 
@@ -109,6 +115,7 @@ function registrarMulta() {
 
     if (oDGT.registrarMulta(nuevoRegistroMulta)) {
         oMensajes.innerHTML = "<p style='color:green'> Multa registrada correctamente </p>";
+
         limpiarCampos();
     } else {
         oMensajes.innerHTML = "<p style='color:red'>" + "Error, la multa que intenta introducir ya existe" + "</p>";
@@ -138,6 +145,10 @@ function listadoConductores() {
 
 function listadoGuardiaCivil() {
     let sListado = oDGT.listadoGuardiaCivil();
-
     document.getElementById("listados").innerHTML = sListado;
 }
+
+
+
+////////////////////////////////////////////////
+

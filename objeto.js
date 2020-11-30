@@ -41,9 +41,9 @@ class DGT
         return bResultado;
     }
 
+    
+     registrarMulta(oMulta) {
 
-    registrarMulta(oMulta) 
-    {
         let bResultado = true;
 
         if (this._multas.some(oM => oM.idMulta == oMulta.idMulta)) 
