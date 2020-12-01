@@ -257,9 +257,9 @@ class DGT {
     }
 
 
-    pedirDatosMulta(idMulta) {
-        //Este metodo sirve para delvover los datos a código y imprimir por pantalla
-        let multaImprimir = oDGT.sacarMulta(idMulta);
+    pedirDatosMulta(iIdMulta) {
+        //Este metodo sirve para delvover los datos a código e imprimir por pantalla
+        let multaImprimir = oDGT.sacarMulta(iIdMulta);
         let resultado = "";
         if (multaImprimir != null) {
             resultado = multaImprimir.toHTMLRow();
@@ -290,7 +290,7 @@ class Multa {
         this.fecha = dFecha;
     }
 
-    listarMulta() {
+    /*listarMulta() {
         //Creamos el listado que contiene el documento de la MULTA
         let stabla = '<table border="1">';
 
@@ -310,7 +310,7 @@ class Multa {
         sTabla += "</tr>";
         stabla += "</thead>";
 
-    }
+    }*/
 
 
 }

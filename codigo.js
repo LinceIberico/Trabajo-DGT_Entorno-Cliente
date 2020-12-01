@@ -93,7 +93,7 @@ function registrarMulta() {
 
     let oMensajes = document.getElementById("mensajesAltaMulta");
 
-    let iIdMulta = oFormularioRegistrarMulta.txtidMulta.value.trim();
+    let iIdMulta = parseInt(oFormularioRegistrarMulta.txtidMulta.value.trim());
     let sNifConductor = oFormularioRegistrarMulta.txtNifConductor.value.trim();
     let sNifGuardia = oFormularioRegistrarMulta.txtNifGuardiaCivil.value.trim();
     let sImporte = parseInt(oFormularioRegistrarMulta.txtImporte.value.trim());
@@ -172,7 +172,7 @@ function imprimirMulta() {
         // let web = open("imprimible.html");
         let oVentana = open("imprimible.html", "Multa impresa", "width=875px, height=400px");
 
-        web.onload = function() {
+        oVentana.onload = function() {
 
             oVentana.document.getElementById("multaAImprimir").innerHTML = resultado;
 
