@@ -156,11 +156,32 @@ function listadoMultasPorGuardia() {
     document.getElementById("listados").innerHTML = sListado;
 }
 
-function imprimirMulta() {
+/*function imprimirMulta() {
     let sListado = oDGT.imprimirMulta();
     let oVentana = open("", "Multa impresa", "width=875px, height=400px");
 
     oVentana.document.body.innerHTML = sListado;
+}*/
+
+function imprimirMulta() {
+    let idMulta = parseInt(frmImprimirMulta.txtidMulta.value.trim());
+    let resultado = "<tr><th>IDMulta</th><th>NIF Conductor</th><th>NIF Guardia</th><th>Importe</th><th>Pagada</th><th>Desripción</th><th>Fecha</th><th>Bonificada</th></tr>";
+    resultado += oDGT.pedirDatosMulta(idMulta);
+
+    if (resultado) {
+        // let web = open("imprimible.html");
+        let oVentana = open("imprimible.html", "Multa impresa", "width=875px, height=400px");
+
+        web.onload = function() {
+
+            oVentana.document.getElementById("multaAImprimir").innerHTML = resultado;
+
+        };
+
+    } else {
+        alert("Error. Multa no encontrada");
+    }
+
 }
 
 

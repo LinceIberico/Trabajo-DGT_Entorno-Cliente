@@ -222,25 +222,7 @@ class DGT {
 
         return sTabla;
 
-        // let sTabla = '<table border="1">';
-        // sTabla += "<thead><tr>";
-        // sTabla += "<th>NIF</th><th>Nombre</th>";
-        // sTabla += "<th>Apellidos</th><th>Puesto</th>";
-        // sTabla += "<th>Nº Multa</th><th>Importe Total</th>";
-        // sTabla += "</tr></thead>";
 
-        // sTabla += "<tbody>";
-        // //let oGuardiaListar = this._personas.filter(oP => oP instanceof GuardiaCivil);
-        // let oGuardiaListar = this._personas.find(oP => oP.nif == oP.nif);
-
-
-        // for (let i = 0; i < oGuardiaListar.length; i++) {
-        //     sTabla += oP.toHTMLrow();
-
-        // }
-        // sTabla += "</tbody>";
-
-        // return sTabla;
     }
 
     imprimirMulta() {
@@ -274,6 +256,24 @@ class DGT {
 
     }
 
+
+    pedirDatosMulta(idMulta) {
+        //Este metodo sirve para delvover los datos a código y imprimir por pantalla
+        let multaImprimir = oDGT.sacarMulta(idMulta);
+        let resultado = "";
+        if (multaImprimir != null) {
+            resultado = multaImprimir.toHTMLRow();
+            return resultado;
+        } else {
+            return false;
+        }
+    }
+
+    sacarMulta(iIdMulta) {
+        let oMulta = null;
+        oMulta = this._multas.find(multa => multa.multa == iIdMulta);
+        return oMulta;
+    }
 
 }
 
