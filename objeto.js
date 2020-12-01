@@ -225,6 +225,26 @@ class DGT {
 
     }
 
+    listadoMultasPorFecha(fechaInicio, fechaFin)
+    {
+        let arrayMultas = [];
+        let importeTotal =0;
+
+        for(let i =0; i< this._multas.length; i++)
+        {
+           if(this._multas[i].fecha.getTime() >= fechaInicio.getTime() && this._multas[i].fecha.getTime() <= fechaFin.getTime())
+            {
+                arrayMultas.push(this._multas[i]);
+            }
+        }
+        console.log(arrayMultas);
+        for(let j=0;j<arrayMultas.length;j++)
+        {
+            importeTotal+= arrayMultas[j].importe;
+        }
+        console.log(importeTotal);
+    }
+
     imprimirMulta() {
         let sCadena = "";
 

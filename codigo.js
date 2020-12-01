@@ -16,12 +16,12 @@ function datosIniciales() {
     oDGT.altaGuardiaCivil(new GuardiaCivil("5138", "Jesús", "Guillén", "Calle Perejil", "Teniente"));
 
 
-    oDGT.registrarMulta(new Leve(321, "7777", "1973", 100, "Mal estacionado", "2020-11-23", false));
-    oDGT.registrarMulta(new Grave(123, "6548", "5138", 660, "Sobrepasa tasa de alcohol", "2020-7-5", 4));
-    oDGT.registrarMulta(new Grave(789, "1234", "1973", 900, "Fuera de casa en estado de alarma", "2020-7-5", 3));
-    oDGT.registrarMulta(new Grave(987, "6548", "5138", 1260, "Sobrepasa tasa de alcohol", "2020-7-5", 1));
-    oDGT.registrarMulta(new Leve(654, "7777", "1973", 600, "Iba bajo el efecto de estupefacientes", "2020-4-92", true));
-    oDGT.registrarMulta(new Leve(852, "7894", "8246", 100, "Fuera de casa en estado de alarma", "2020-4-5", true));
+    oDGT.registrarMulta(new Leve(321, "7777", "1973", 100, "Mal estacionado", new Date(2020, 11, 23), false));
+    oDGT.registrarMulta(new Grave(123, "6548", "5138", 660, "Sobrepasa tasa de alcohol", new Date(2020, 0, 6), 4));
+    oDGT.registrarMulta(new Grave(789, "1234", "1973", 900, "Fuera de casa en estado de alarma", new Date(2020, 1, 28), 3));
+    oDGT.registrarMulta(new Grave(987, "6548", "5138", 1260, "Sobrepasa tasa de alcohol", new Date(2020, 10, 23), 1));
+    oDGT.registrarMulta(new Leve(654, "7777", "1973", 600, "Iba bajo el efecto de estupefacientes", new Date(2020, 4, 19), true));
+    oDGT.registrarMulta(new Leve(852, "7894", "8246", 100, "Fuera de casa en estado de alarma", new Date(2020, 7, 5), true));
 
 }
 
@@ -98,7 +98,7 @@ function registrarMulta() {
     let sNifGuardia = oFormularioRegistrarMulta.txtNifGuardiaCivil.value.trim();
     let sImporte = parseInt(oFormularioRegistrarMulta.txtImporte.value.trim());
     let sDescripcion = oFormularioRegistrarMulta.txtDescripcion.value.trim();
-    let dtFecha = oFormularioRegistrarMulta.dtFecha.value.trim();
+    let dtFecha = new Date(oFormularioRegistrarMulta.dtFecha.value.trim());
     let sRadioLeveGrave = oFormularioRegistrarMulta.radioLevedad.value;
 
 
@@ -154,6 +154,17 @@ function listadoGuardiaCivil() {
 function listadoMultasPorGuardia() {
     let sListado = oDGT.listadoMultasPorGuardia();
     document.getElementById("listados").innerHTML = sListado;
+}
+function listadoMultasPorFecha()
+{
+    let oFormularioMultasPorFecha = document.getElementById("frmMultasPorFecha");
+    let fechaInicial = new Date(oFormularioMultasPorFecha.dtFechaInicio.value.trim());
+    let fechaFinal = new Date(oFormularioMultasPorFecha.dtFechaFin.value.trim());
+
+    let sListado = oDGT.listadoMultasPorFecha(fechaInicial, fechaFinal);
+        
+    document.getElementById("listados").innerHTML = sListado;
+
 }
 
 /*function imprimirMulta() {
