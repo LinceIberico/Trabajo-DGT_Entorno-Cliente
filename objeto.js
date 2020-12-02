@@ -472,7 +472,7 @@ class Leve extends Multa {
         sFila += "<td>" + this.fecha.getDate() + "/" + this._numeroMes(this.fecha.getMonth()) + "/" + this.fecha.getFullYear() + "</td>";
         sFila += "<td>" + (this.bonificada ? "SI" : "NO") + "</td></tr>";
 
-        return sFila
+        return sFila;
     }
 }
 
@@ -494,7 +494,7 @@ class Grave extends Multa {
         sFila += "<td>" + this.fecha.getDate() + "/" + this._numeroMes(this.fecha.getMonth()) + "/" + this.fecha.getFullYear() + "</td>";
         sFila += "<td>" + this.puntos + "</td></tr>";
 
-        return sFila
+        return sFila;
     }
 
 }
