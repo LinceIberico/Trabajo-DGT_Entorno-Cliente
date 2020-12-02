@@ -93,10 +93,10 @@ function registrarMulta() {
 
     let oMensajes = document.getElementById("mensajesAltaMulta");
 
-    let iIdMulta = oFormularioRegistrarMulta.txtidMulta.value.trim();
+    let iIdMulta = parseInt(oFormularioRegistrarMulta.txtidMulta.value.trim());
     let sNifConductor = oFormularioRegistrarMulta.txtNifConductor.value.trim();
     let sNifGuardia = oFormularioRegistrarMulta.txtNifGuardiaCivil.value.trim();
-    let sImporte = parseInt(oFormularioRegistrarMulta.txtImporte.value.trim());
+    let sImporte = parseFloat(oFormularioRegistrarMulta.txtImporte.value.trim());
     let sDescripcion = oFormularioRegistrarMulta.txtDescripcion.value.trim();
     let dtFecha = new Date(oFormularioRegistrarMulta.dtFecha.value.trim());
     let sRadioLeveGrave = oFormularioRegistrarMulta.radioLevedad.value;
@@ -114,8 +114,6 @@ function registrarMulta() {
             nuevoRegistroMulta = new Leve(iIdMulta, sNifConductor, sNifGuardia, sImporte, sDescripcion, dtFecha, false);
         }
     }
-
-
     if (oDGT.registrarMulta(nuevoRegistroMulta)) {
         oMensajes.innerHTML = "<p style='color:green'> Multa registrada correctamente </p>";
 
@@ -123,7 +121,12 @@ function registrarMulta() {
     } else {
         oMensajes.innerHTML = "<p style='color:red'>" + "Error, la multa que intenta introducir ya existe" + "</p>";
     }
+}
 
+function listadoPuntosConductor() {
+
+    let sListado = oDGT.listadoPuntosConductor();
+    document.getElementById("listados").innerHTML = sListado;
 
 }
 
@@ -132,7 +135,7 @@ function aceptarPagoMulta() {
     let oMensajes = document.getElementById("mensajesPagoMulta");
     let idMulta = oFormularioPagarMulta.txtidMulta.value.trim();
 
-    oMensajes.innerHTML = oDGT.pagarMulta(idMulta)
+    oMensajes.innerHTML = oDGT.pagarMulta(idMulta);
     limpiarCampos();
 }
 
@@ -155,14 +158,14 @@ function listadoMultasPorGuardia() {
     let sListado = oDGT.listadoMultasPorGuardia();
     document.getElementById("listados").innerHTML = sListado;
 }
-function listadoMultasPorFecha()
-{
+
+function listadoMultasPorFecha() {
     let oFormularioMultasPorFecha = document.getElementById("frmMultasPorFecha");
     let fechaInicial = new Date(oFormularioMultasPorFecha.dtFechaInicio.value.trim());
     let fechaFinal = new Date(oFormularioMultasPorFecha.dtFechaFin.value.trim());
 
     let sListado = oDGT.listadoMultasPorFecha(fechaInicial, fechaFinal);
-        
+
     document.getElementById("listados").innerHTML = sListado;
 
 }
@@ -172,8 +175,8 @@ function imprimirMulta() {
     let idMulta = oFormularioImprimirMulta.txtidMulta.value.trim();
     let resultado = oDGT.imprimirMulta(idMulta);
 
-    let oVentana = open("imprimible.html", "Multa impresa", "width=875px, height=400px");
-    
+    let oVentana = open("imprimible.html", "Multa impresa", "width=875px, height=600px");
+
     oVentana.onload = function() {
 
         oVentana.document.getElementById("multaAImprimir").innerHTML = resultado;

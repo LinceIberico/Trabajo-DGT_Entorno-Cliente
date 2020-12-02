@@ -13,15 +13,27 @@
     }
     
     div {
-        align-items: center;
+        display: table-cell;
+        vertical-align: middle;
         text-align: center;
+    }
+    
+    .contenedor {
+        display: flex;
+        align-items: center;
+    }
+    
+    .contenido {
+        margin: 0 auto;
+        /* requerido para alineación horizontal */
     }
 </style>
 
 <body>
     <h1> Impresión de Multa de la DGT</h1>
-
-    <div id="multaAImprimir"></div>
+    <div class="contenedor">
+        <div class="contenido" id="multaAImprimir"></div>
+    </div>
 
 
 </body>

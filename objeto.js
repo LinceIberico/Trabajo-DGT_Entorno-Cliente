@@ -31,7 +31,6 @@ class DGT {
         return bResultado;
     }
 
-
     registrarMulta(oMulta) {
 
         let bResultado = true;
@@ -153,7 +152,7 @@ class DGT {
         return sTabla;
     }
 
-    listadoMultasPorGuardia() { //NO FUNCIONA, TENEMOS QUE REVISARLO
+    listadoMultasPorGuardia() {
 
         let sTabla = '<table border="1">';
         sTabla += "<thead><tr>";
@@ -222,95 +221,98 @@ class DGT {
 
         return sTabla;
 
-        // let sTabla = '<table border="1">';
-        // sTabla += "<thead><tr>";
-        // sTabla += "<th>NIF</th><th>Nombre</th>";
-        // sTabla += "<th>Apellidos</th><th>Puesto</th>";
-        // sTabla += "<th>Nº Multa</th><th>Importe Total</th>";
-        // sTabla += "</tr></thead>";
-
-        // sTabla += "<tbody>";
-        // //let oGuardiaListar = this._personas.filter(oP => oP instanceof GuardiaCivil);
-        // let oGuardiaListar = this._personas.find(oP => oP.nif == oP.nif);
-
-
-        // for (let i = 0; i < oGuardiaListar.length; i++) {
-        //     sTabla += oP.toHTMLrow();
-
-        // }
-        // sTabla += "</tbody>";
-
-        // return sTabla;
     }
 
-    listadoMultasPorFecha(fechaInicio, fechaFin)
-    {
+    listadoMultasPorFecha(fechaInicio, fechaFin) {
+
         let arrayMultas = [];
-        let importeTotal =0;
+        let importeTotal = 0;
         let sTabla = "";
 
         sTabla += "<table border=1><thead>"
         sTabla += "<tr><th>IdMulta</th><th>NIF Conductor</th><th>NIF Guardia</th><th>Importe</th><th>¿Pagada?</th><th>Descripción</th><th>Fecha</th><tr>";
         sTabla += "</thead>";
         sTabla += "<tbody>"
-        for(let i =0; i< this._multas.length; i++)
-        {
-           if(this._multas[i].fecha.getTime() >= fechaInicio.getTime() && this._multas[i].fecha.getTime() <= fechaFin.getTime())
-            {
+        for (let i = 0; i < this._multas.length; i++) {
+            if (this._multas[i].fecha.getTime() >= fechaInicio.getTime() && this._multas[i].fecha.getTime() <= fechaFin.getTime()) {
                 arrayMultas.push(this._multas[i]);
             }
         }
         console.log(arrayMultas);
-        for(let j=0;j<arrayMultas.length;j++)
-        {
-            importeTotal+= arrayMultas[j].importe;
+        for (let j = 0; j < arrayMultas.length; j++) {
+            importeTotal += arrayMultas[j].importe;
         }
-        
-        for(let i=0;i<arrayMultas.length;i++)
-        {
+
+        for (let i = 0; i < arrayMultas.length; i++) {
             sTabla += arrayMultas[i].toHTMLrow();
         }
 
-        sTabla += "<tr><th>Importe total: </th><th COLSPAN='6'>"+importeTotal +"</th></tr>"
+        sTabla += "<tr><th>Importe total: </th><th COLSPAN='6'>" + importeTotal + "</th></tr>"
         sTabla += "</tbody></table>";
         console.log(importeTotal);
         return sTabla;
+    }
+    listadoPuntosConductor() {
+
+        let oConductor = this._personas.filter(oC => oC instanceof Conductor);
+        let oMultasGraves = this._multas.filter(oM => oM instanceof Grave);
+        let resultadoConductor = "";
+        oConductor.forEach(oC => {
+            oMultasGraves.forEach(oM => {
+                if (conductor.nif == oM.NIFConductor) {
+                    resultadoConductor += "<tr>";
+                    resultadoConductor += "<td>" + oC.NIF + "</td>";
+                    resultadoConductor += "<td>" + oM.puntos + "</td>";
+                    resultadoConductor += "</tr>";
+
+                }
+            });
+        });
+        if (resultadoConductor.length > 0) {
+            return resultadoConductor;
+        } else {
+            return "No hay multas"; //1 es igual a no hay multas
+        }
+
+
     }
 
     imprimirMulta(idMulta) {
         let sTabla = "";
         let multaAEncontrar = this._multas.find(oP => oP.idMulta == idMulta);
 
-        if(multaAEncontrar)
-        {
+        if (multaAEncontrar) {
             sTabla += "<table border = 1>";
             sTabla += "<thead>";
-            sTabla += "<tr><th COLSPAN='4'><h1>Datos de la multa "+ multaAEncontrar.idMulta +"</h1></tr></th>";
+            sTabla += "<tr><th COLSPAN='4'><h1>Datos de la multa " + multaAEncontrar.idMulta + "</h1></tr></th>";
 
-            sTabla += "<tr><td colspan='2'><b>Fecha:</b>"+multaAEncontrar.fecha.getDate()+" - "+ this._numeroMes(multaAEncontrar.fecha.getMonth()) +" - "+ multaAEncontrar.fecha.getFullYear() +"</td><td colspan='2'><b>Importe: " + multaAEncontrar.importe +"</b></td></tr>";
-            sTabla += "<tr><td COLSPAN='4'><b>Descripcion:</b> "+multaAEncontrar.descripcion + "</td></tr>"
-            sTabla += "<tr><td COLSPAN='4'><b>Pagada: </b>" + (multaAEncontrar.pagada?"SI":"NO") +"</td></tr>"
+            sTabla += "<tr><td colspan='2'><b>Fecha:</b>" + multaAEncontrar.fecha.getDate() + " - " + this._numeroMes(multaAEncontrar.fecha.getMonth()) + " - " + multaAEncontrar.fecha.getFullYear() + "</td><td colspan='2'><b>Importe: " + multaAEncontrar.importe + "</b></td></tr>";
+            sTabla += "<tr><td COLSPAN='4'><b>Descripcion:</b> " + multaAEncontrar.descripcion + "</td></tr>"
+            sTabla += "<tr><td COLSPAN='4'><b>Pagada: </b>" + (multaAEncontrar.pagada ? "SI" : "NO") + "</td></tr>"
             sTabla += "<tr><td COLSPAN='4'><b>Datos Conductor</b></td></tr>";
-            sTabla += "<tr><td COLSPAN='4'><b>NIF: </b>"+ multaAEncontrar.nifConductor +"</td></tr>";
+            sTabla += "<tr><td COLSPAN='4'><b>NIF: </b>" + multaAEncontrar.nifConductor + "</td></tr>";
+
             let nifAEncontrar = multaAEncontrar.nifConductor;
             let conductorAEncontrar = this._personas.find(oP => oP.nif == nifAEncontrar);
-            if(conductorAEncontrar)
-            {
-            sTabla += "<tr><td COLSPAN='2'><b>Nombre: </b>"+ conductorAEncontrar.nombre +"</td><td COLSPAN='2'><b>Apellidos: </b>" + conductorAEncontrar.apellidos +"</td></tr>";
-            sTabla += "<tr><td COLSPAN='4'><b>Dirección: </b>"+ conductorAEncontrar.direccion +"</td></tr>";
+
+            if (conductorAEncontrar) {
+                sTabla += "<tr><td COLSPAN='2'><b>Nombre: </b>" + conductorAEncontrar.nombre + "</td><td COLSPAN='2'><b>Apellidos: </b>" + conductorAEncontrar.apellidos + "</td></tr>";
+                sTabla += "<tr><td COLSPAN='4'><b>Dirección: </b>" + conductorAEncontrar.direccion + "</td></tr>";
 
             }
+
             sTabla += "<tr><td COLSPAN='4'><b>Datos Guardia Civil: </b></td></tr>";
-            sTabla += "<tr><td COLSPAN='4'><b>NIF: </b>"+ multaAEncontrar.nifGuardia +"</td></tr>";
+            sTabla += "<tr><td COLSPAN='4'><b>NIF: </b>" + multaAEncontrar.nifGuardia + "</td></tr>";
             nifAEncontrar = multaAEncontrar.nifGuardia;
+
             let oGC = this._personas.filter(oP => oP instanceof GuardiaCivil)
-            let guardiaCivilAEncontrar= oGC.find(oP => oP.sNif ==  oGC.nif);
-            sTabla += "<tr><td COLSPAN='2'><b>Nombre: </b>"+ guardiaCivilAEncontrar.nombre +"</td><td COLSPAN='2'><b>Apellidos: </b>" + guardiaCivilAEncontrar.apellidos +"</td></tr>";
-            sTabla += "<tr><td COLSPAN='4'><b>Dirección: </b>"+ guardiaCivilAEncontrar.direccion +"</td></tr>";
-            sTabla += "<tr><td COLSPAN='4'><b>Puesto: </b>"+ guardiaCivilAEncontrar.puesto +"</td></tr>";
-        }
-        else
-        {
+            let guardiaCivilAEncontrar = oGC.find(oP => oP.sNif == oGC.nif);
+
+            sTabla += "<tr><td COLSPAN='2'><b>Nombre: </b>" + guardiaCivilAEncontrar.nombre + "</td><td COLSPAN='2'><b>Apellidos: </b>" + guardiaCivilAEncontrar.apellidos + "</td></tr>";
+            sTabla += "<tr><td COLSPAN='4'><b>Dirección: </b>" + guardiaCivilAEncontrar.direccion + "</td></tr>";
+            sTabla += "<tr><td COLSPAN='4'><b>Puesto: </b>" + guardiaCivilAEncontrar.puesto + "</td></tr>";
+
+        } else {
             sTabla = "La multa de la que ha realizado la busqueda no se encuentra en nuestra base de datos."
         }
 
@@ -319,55 +321,53 @@ class DGT {
 
     }
 
-    _numeroMes(numeroMes)
-    {
-        switch(numeroMes)
-        {
+    _numeroMes(numeroMes) {
+        switch (numeroMes) {
             case 0:
                 return 1;
-            break;
+                break;
 
             case 1:
                 return 2;
-            break;
+                break;
 
             case 2:
                 return 3;
-            break;
-            
+                break;
+
             case 3:
                 return 4;
-            break;
+                break;
 
             case 4:
                 return 5;
-            break;
-            
+                break;
+
             case 5:
                 return 6;
-            break;
+                break;
 
             case 6:
                 return 7;
-            break;
-            
+                break;
+
             case 7:
                 return 8;
-            break;
+                break;
             case 8:
                 return 9;
-            break;
-            
+                break;
+
             case 9:
                 return 10;
-            break;
+                break;
 
             case 10:
                 return 11;
-            break;
-            
-           default:
-               return 12;            
+                break;
+
+            default:
+                return 12;
         }
     }
 
@@ -387,69 +387,66 @@ class Multa {
         this.fecha = new Date(dFecha);
     }
 
-    toHTMLrow()
-    {
-    let sFila = "<tr>";
+    toHTMLrow() {
+        let sFila = "<tr>";
         sFila += "<td>" + this.idMulta + "</td>";
         sFila += "<td>" + this.nifConductor + "</td>";
         sFila += "<td>" + this.nifGuardia + "</td>";
         sFila += "<td>" + this.importe + "</td>";
-        sFila += "<td>" + (this.pagada?"SI":"NO") + "</td>";
+        sFila += "<td>" + (this.pagada ? "SI" : "NO") + "</td>";
         sFila += "<td>" + this.descripcion + "</td>";
-        sFila += "<td>" + this.fecha.getDate() + "/" +this._numeroMes(this.fecha.getMonth()) +"/"+ this.fecha.getFullYear() +"</td></tr>";
-        
+        sFila += "<td>" + this.fecha.getDate() + "/" + this._numeroMes(this.fecha.getMonth()) + "/" + this.fecha.getFullYear() + "</td></tr>";
+
         return sFila
     }
 
-    _numeroMes(numeroMes)
-    {
-        switch(numeroMes)
-        {
+    _numeroMes(numeroMes) {
+        switch (numeroMes) {
             case 0:
                 return 1;
-            break;
+                break;
 
             case 1:
                 return 2;
-            break;
+                break;
 
             case 2:
                 return 3;
-            break;
-            
+                break;
+
             case 3:
                 return 4;
-            break;
+                break;
 
             case 4:
                 return 5;
-            break;
-            
+                break;
+
             case 5:
                 return 6;
-            break;
+                break;
 
             case 6:
                 return 7;
-            break;
-            
+                break;
+
             case 7:
                 return 8;
-            break;
+                break;
             case 8:
                 return 9;
-            break;
-            
+                break;
+
             case 9:
                 return 10;
-            break;
+                break;
 
             case 10:
                 return 11;
-            break;
-            
-           default:
-               return 12;            
+                break;
+
+            default:
+                return 12;
         }
     }
 
@@ -460,46 +457,46 @@ class Multa {
 class Leve extends Multa {
 
     constructor(idMulta, nifConductor, nifGuardia, importe, pagada, descripcion, fecha, bonificada) {
-            super(idMulta, nifConductor, nifGuardia, importe, pagada, descripcion, fecha);
-            this.bonificada = bonificada || false;
-            /*this.bonificada = bonificada;
-            alert(bonificada == true);
-            alert(bonificada);
-            alert(bonificada || false);*/
-        }
-        /*
-        get bonificada() {
-            return this.bonificada;
-        }
-        set bonificada(valor) {
-            this.bonificada = valor;
-        }*/
+        super(idMulta, nifConductor, nifGuardia, importe, pagada, descripcion, fecha);
+        this.bonificada = bonificada || false;
+
+    }
+    toHTMLrow() {
+        let sFila = "<tr>";
+        sFila += "<td>" + this.idMulta + "</td>";
+        sFila += "<td>" + this.nifConductor + "</td>";
+        sFila += "<td>" + this.nifGuardia + "</td>";
+        sFila += "<td>" + this.importe + "</td>";
+        sFila += "<td>" + (this.pagada ? "SI" : "NO") + "</td>";
+        sFila += "<td>" + this.descripcion + "</td>";
+        sFila += "<td>" + this.fecha.getDate() + "/" + this._numeroMes(this.fecha.getMonth()) + "/" + this.fecha.getFullYear() + "</td>";
+        sFila += "<td>" + (this.bonificada ? "SI" : "NO") + "</td></tr>";
+
+        return sFila
+    }
 }
 
 //Clase Grave
 
 class Grave extends Multa {
     constructor(idMulta, nifConductor, nifGuardia, importe, pagada, descripcion, fecha, puntos) {
-            super(idMulta, nifConductor, nifGuardia, importe, pagada, descripcion, fecha);
-            this.puntos = puntos;
-        }
-        //NO FUNCIONA
+        super(idMulta, nifConductor, nifGuardia, importe, pagada, descripcion, fecha);
+        this.puntos = puntos;
+    }
+    toHTMLrow() {
+        let sFila = "<tr>";
+        sFila += "<td>" + this.idMulta + "</td>";
+        sFila += "<td>" + this.nifConductor + "</td>";
+        sFila += "<td>" + this.nifGuardia + "</td>";
+        sFila += "<td>" + this.importe + "</td>";
+        sFila += "<td>" + (this.pagada ? "SI" : "NO") + "</td>";
+        sFila += "<td>" + this.descripcion + "</td>";
+        sFila += "<td>" + this.fecha.getDate() + "/" + this._numeroMes(this.fecha.getMonth()) + "/" + this.fecha.getFullYear() + "</td>";
+        sFila += "<td>" + this.puntos + "</td></tr>";
 
-    /*get saldo() {
-        return 15 - this.puntos;
+        return sFila
     }
 
-    set puntos(valor) {
-        this.puntos = valor;
-    }*/
-
-
-    /*get puntos() {
-        return this.puntos;
-    }
-    set puntos(valor) {
-        this.puntos = valor;
-    }*/
 }
 
 /////////// CLASES DE LA FORMA ANTIGUA /////////////////

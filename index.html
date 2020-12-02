@@ -18,108 +18,133 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+    <style>
+        .contenedor-principal {
+            overflow: hidden;
+            width: 100%;
+            margin: 0 auto;
+        }
+        
+        .contenedor-listados,
+        .contenedor-formulario {
+            float: left;
+        }
+        
+        .contenedor-formulario {
+            margin-left: 10%;
+            margin-top: 25px;
+        }
+        
+        .contenedor-listados {
+            margin-top: 250px;
+            margin-right: 200px;
+        }
+    </style>
 
     <title>Aplicación DGT</title>
 </head>
 
 <body>
-    <div id="menu">
-        <form id="frmMenu" class="form-horizontal" style="float:initial" name="frmMenu">
-            <fieldset>
+    <div class="contenedor-principal" id="menu">
+        <div class="contenedor-formulario">
+            <form id="frmMenu" class="form-horizontal" style="float:initial" name="frmMenu">
+                <fieldset>
 
-                <!-- Form Name -->
-                <legend>Menú principal</legend>
+                    <!-- Form Name -->
+                    <legend>Menú principal</legend>
 
-                <!-- Button -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="btnAltaConductor">Alta conductor</label>
-                    <div class="col-md-4">
-                        <input type="button" id="btnAltaConductor" name="btnAltaConductor" class="btn btn-primary" value="Dar de alta" data-toggle="modal" data-target="#altaConductor" />
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="btnAltaConductor">Alta conductor</label>
+                        <div class="col-md-4">
+                            <input type="button" id="btnAltaConductor" name="btnAltaConductor" class="btn btn-primary" value="Dar de alta" data-toggle="modal" data-target="#altaConductor" />
+                        </div>
                     </div>
-                </div>
 
-                <!-- Button -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="btnAltaGuardiaCivil">Alta guardia civil</label>
-                    <div class="col-md-4">
-                        <input type="button" id="btnAltaGuardiaCivil" name="btnAltaGuardiaCivil" class="btn btn-primary" value="Dar de alta" data-toggle="modal" data-target="#altaGuardiaCivil" />
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="btnAltaGuardiaCivil">Alta guardia civil</label>
+                        <div class="col-md-4">
+                            <input type="button" id="btnAltaGuardiaCivil" name="btnAltaGuardiaCivil" class="btn btn-primary" value="Dar de alta" data-toggle="modal" data-target="#altaGuardiaCivil" />
+                        </div>
                     </div>
-                </div>
 
-                <!-- Button -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="btnRegistrarMulta">Registrar multa</label>
-                    <div class="col-md-4">
-                        <input type="button" id="btnRegistrarMulta" name="btnRegistrarMulta" class="btn btn-primary" value="Registrar" data-toggle="modal" data-target="#registrarMulta" />
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="btnRegistrarMulta">Registrar multa</label>
+                        <div class="col-md-4">
+                            <input type="button" id="btnRegistrarMulta" name="btnRegistrarMulta" class="btn btn-primary" value="Registrar" data-toggle="modal" data-target="#registrarMulta" />
+                        </div>
                     </div>
-                </div>
 
-                <!-- Button -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="btnPagarMulta">Pagar multa</label>
-                    <div class="col-md-4">
-                        <input type="button" id="btnPagarMulta" name="btnPagarMulta" class="btn btn-primary" value="Pagar" data-toggle="modal" data-target="#pagarMulta" />
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="btnPagarMulta">Pagar multa</label>
+                        <div class="col-md-4">
+                            <input type="button" id="btnPagarMulta" name="btnPagarMulta" class="btn btn-primary" value="Pagar" data-toggle="modal" data-target="#pagarMulta" />
+                        </div>
                     </div>
-                </div>
 
-                <!-- Button -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="btnListadoSaldoCond">Listado saldo conductor</label>
-                    <div class="col-md-4">
-                        <input type="button" id="btnListadoSaldoCond" name="btnListadoSaldoCond" class="btn btn-primary" value="Mostrar listado" onclick="listadoSaldoConductor()" />
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="btnListadoSaldoCond">Listado saldo conductor</label>
+                        <div class="col-md-4">
+                            <input type="button" id="btnListadoSaldoCond" name="btnListadoSaldoCond" class="btn btn-primary" value="Listar Saldo Conductor" onclick="listadoSaldoConductor()" />
+                        </div>
                     </div>
-                </div>
 
-                <!-- Button -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="btnListadoPuntosCond">Listado puntos conductor</label>
-                    <div class="col-md-4">
-                        <input type="button" id="btnListadoPuntosCond" name="btnListadoPuntosCond" class="btn btn-primary" value="Mostrar listado" onclick="" />
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="btnListadoPuntosCond">Listado puntos conductor</label>
+                        <div class="col-md-4">
+                            <input type="button" id="btnListadoPuntosCond" name="btnListadoPuntosCond" class="btn btn-primary" value="Listar Puntos Conductor" onclick="listadoPuntosConductor()" />
+                        </div>
                     </div>
-                </div>
 
-                <!-- Button -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="btnListadoMultasPorGuardia">Listado multas por guardia</label>
-                    <div class="col-md-4">
-                        <input type="button" id="btnListadoMultasPorGuardia" name="btnListadoMultasPorGuardia" class="btn btn-primary" value="Mostrar listado" data-toggle="modal" data-target="#multasPorGuardia" />
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="btnListadoMultasPorGuardia">Listado multas por guardia</label>
+                        <div class="col-md-4">
+                            <input type="button" id="btnListadoMultasPorGuardia" name="btnListadoMultasPorGuardia" class="btn btn-primary" value="Listar Multas por Guardia" data-toggle="modal" data-target="#multasPorGuardia" />
+                        </div>
                     </div>
-                </div>
 
-                <!-- Button -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="btnMultasPorFecha">Listado multas por fecha</label>
-                    <div class="col-md-4">
-                        <input type="button" id="btnMultasPorFecha" name="btnMultasPorFecha" class="btn btn-primary" value="Mostrar listado" data-toggle="modal" data-target="#multasPorFecha" />
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="btnMultasPorFecha">Listado multas por fecha</label>
+                        <div class="col-md-4">
+                            <input type="button" id="btnMultasPorFecha" name="btnMultasPorFecha" class="btn btn-primary" value="Multas por Fecha" data-toggle="modal" data-target="#multasPorFecha" />
+                        </div>
                     </div>
-                </div>
 
-                <!-- Button -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="btnListadoConductores">Listado conductores</label>
-                    <div class="col-md-4">
-                        <input type="button" id="btnListadoConductores" name="btnListadoConductores" class="btn btn-primary" value="Mostrar listado" onclick="listadoConductores()" />
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="btnListadoConductores">Listado conductores</label>
+                        <div class="col-md-4">
+                            <input type="button" id="btnListadoConductores" name="btnListadoConductores" class="btn btn-primary" value="Listar Conductores" onclick="listadoConductores()" />
+                        </div>
                     </div>
-                </div>
 
-                <!-- Button -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="btnListadoGuardiaCiviles">Listado guardia civiles</label>
-                    <div class="col-md-4">
-                        <input type="button" id="btnListadoGuardiaCiviles" name="btnListadoGuardiaCiviles" class="btn btn-primary" value="Mostrar listado" onclick="listadoGuardiaCivil()" />
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="btnListadoGuardiaCiviles">Listado guardia civiles</label>
+                        <div class="col-md-4">
+                            <input type="button" id="btnListadoGuardiaCiviles" name="btnListadoGuardiaCiviles" class="btn btn-primary" value="Listar Guardias Civiles" onclick="listadoGuardiaCivil()" />
+                        </div>
                     </div>
-                </div>
 
-                <!-- Button -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="btnImprimirMulta">Imprimir multa</label>
-                    <div class="col-md-4">
-                        <input type="button" id="btnImprimirMulta" name="btnImprimirMulta" class="btn btn-primary" value="Imprimir" data-toggle="modal" data-target="#imprimirMulta" />
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="btnImprimirMulta">Imprimir multa</label>
+                        <div class="col-md-4">
+                            <input type="button" id="btnImprimirMulta" name="btnImprimirMulta" class="btn btn-primary" value="Impresión Multa" data-toggle="modal" data-target="#imprimirMulta" />
+                        </div>
                     </div>
-                </div>
 
-            </fieldset>
-        </form>
+                </fieldset>
+            </form>
+        </div>
+        <div class="contenedor-listados" id="listados" style="margin-left: 35%;"></div>
     </div>
 
 
@@ -624,7 +649,7 @@
 
 
     <!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-    <div id="listados" style="margin-left: 35%;"></div>
+
     <script type="text/javascript" src="objeto.js"></script>
     <script type="text/javascript" src="codigo.js"></script>
 
